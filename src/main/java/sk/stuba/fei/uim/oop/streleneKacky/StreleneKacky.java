@@ -10,6 +10,7 @@ public class StreleneKacky {
     public static final int MAX_POCET_HRACOV = 6;
     private final Hrac[] hraci;
     private int pocetHracov;
+    private int hracNaTahu = 0;
 
     public StreleneKacky(){
 
@@ -26,6 +27,8 @@ public class StreleneKacky {
         for (int i = 0; i < pocetHracov; i++) {
             this.hraci[i] = new Hrac("Hráč ", i + 1);
         }
+
+
         System.out.println("Počet hráčov je : " + pocetHracov);
         getHraci();
         startHry();
@@ -39,6 +42,13 @@ public class StreleneKacky {
         System.out.println("Vyhral " + Objects.requireNonNull(vitazHry()).getMeno() + Objects.requireNonNull(vitazHry()).getPoradoveCislo());
 
     }
+
+    private void prepniHraca() {
+        this.hracNaTahu ++;
+        System.out.println(this.hracNaTahu);
+        this.hracNaTahu = (this.hracNaTahu % pocetHracov);
+    }
+
 
     public void getHraci() {
         System.out.println("Dnes hrá : ");

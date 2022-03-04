@@ -14,7 +14,7 @@ public class Hrac {
         this.hracZije = true;
     }
 
-    public boolean zabiHracaTest() {
+    public boolean zabiHraca() {
         hracZije = false;
         return hracZije;
     }
