@@ -3,6 +3,8 @@ package sk.stuba.fei.uim.oop.streleneKacky;
 import sk.stuba.fei.uim.oop.hrac.Hrac;
 import sk.stuba.fei.uim.oop.utility.KeyboardInput;
 
+import java.util.Objects;
+
 public class StreleneKacky {
 
     public static final int MAX_POCET_HRACOV = 6;
@@ -33,12 +35,24 @@ public class StreleneKacky {
 
         System.out.println("Hra sa začala");
 
+        System.out.println("Hra sa skončila");
+        System.out.println("Vyhral " + Objects.requireNonNull(vitazHry()).getMeno() + Objects.requireNonNull(vitazHry()).getPoradoveCislo());
+
     }
 
     public void getHraci() {
         System.out.println("Dnes hrá : ");
         for (int i = 0; i < pocetHracov; i++) {
-            System.out.println(this.hraci[i].meno + this.hraci[i].poradoveCislo);
+            System.out.println(this.hraci[i].getMeno() + this.hraci[i].getPoradoveCislo());
         }
+    }
+
+    private Hrac vitazHry() {
+        for (int i = 0; i < pocetHracov; i++) {
+            if (this.hraci[i].isHracZije()) {
+                return this.hraci[i];
+            }
+        }
+        return null;
     }
 }
