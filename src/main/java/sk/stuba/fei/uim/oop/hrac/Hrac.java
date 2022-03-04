@@ -7,8 +7,8 @@ public class Hrac {
     private int pocetZivotov;
     private boolean hracZije;
 
-    public Hrac(String meno ,int poradoveCislo) {
-        this.meno = meno;
+    public Hrac(int poradoveCislo) {
+        this.meno = "Hráč ";
         this.poradoveCislo = poradoveCislo;
         this.pocetZivotov = 5;
         this.hracZije = true;

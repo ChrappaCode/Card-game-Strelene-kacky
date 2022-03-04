@@ -17,17 +17,16 @@ public class StreleneKacky {
         System.out.println("Strelené Kačky Jakub Chrappa");
         this.pocetHracov = KeyboardInput.readInt(String.format("Zadaj pocet hracov od 2 do %d", MAX_POCET_HRACOV));
         while (true){
-            if(pocetHracov < 2 || pocetHracov > 6){
+            if(pocetHracov < 2 || pocetHracov > 6){ //aby nedal menej ako 2 a viac ako 6
                 pocetHracov = KeyboardInput.readInt(String.format("Zadaj pocet hracov od 2 do %d", MAX_POCET_HRACOV));
                 continue;
             }
             this.hraci = new Hrac[pocetHracov];
             break;
         }
-        for (int i = 0; i < pocetHracov; i++) {
-            this.hraci[i] = new Hrac("Hráč ", i + 1);
+        for (int i = 0; i < pocetHracov; i++) {                             //tu si vytvorim hracov
+            this.hraci[i] = new Hrac(i + 1);
         }
-
 
         System.out.println("Počet hráčov je : " + pocetHracov);
         getHraci();
@@ -38,8 +37,10 @@ public class StreleneKacky {
 
         System.out.println("Hra sa začala");
 
+        //kod here
+
         System.out.println("Hra sa skončila");
-        System.out.println("Vyhral " + Objects.requireNonNull(vitazHry()).getMeno() + Objects.requireNonNull(vitazHry()).getPoradoveCislo());
+        //vitazHry();  //funguje to len nechcem ten vypis teraz
 
     }
 
@@ -57,12 +58,11 @@ public class StreleneKacky {
         }
     }
 
-    private Hrac vitazHry() {
+    private void vitazHry() {
         for (int i = 0; i < pocetHracov; i++) {
             if (this.hraci[i].isHracZije()) {
-                return this.hraci[i];
+                System.out.println("Vyhral hráč s poradovím číslom: " + this.hraci[i].getPoradoveCislo());
             }
         }
-        return null;
     }
 }
