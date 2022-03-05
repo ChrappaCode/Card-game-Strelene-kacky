@@ -14,8 +14,11 @@ public class Hrac {
         this.hracZije = true;
     }
 
-    public boolean zabiHraca() {
-        hracZije = false;
+    public boolean hracDostalZasah() {
+        this.pocetZivotov --;
+        if(pocetZivotov == 0){
+            this.hracZije = false;
+        }
         return hracZije;
     }
 
@@ -28,5 +31,9 @@ public class Hrac {
     }
     public int getPoradoveCislo() {
         return poradoveCislo;
+    }
+
+    public int getPocetZivotov() {
+        return pocetZivotov;
     }
 }

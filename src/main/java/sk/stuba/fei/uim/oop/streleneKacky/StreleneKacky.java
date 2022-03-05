@@ -2,6 +2,7 @@ package sk.stuba.fei.uim.oop.streleneKacky;
 
 import sk.stuba.fei.uim.oop.hrac.Hrac;
 import sk.stuba.fei.uim.oop.utility.KeyboardInput;
+import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
 import java.util.Objects;
 
@@ -12,13 +13,15 @@ public class StreleneKacky {
     private int pocetHracov;
     private int hracNaTahu = 0;
 
+
     public StreleneKacky(){
 
         System.out.println("Strelené Kačky Jakub Chrappa");
-        this.pocetHracov = KeyboardInput.readInt(String.format("Zadaj pocet hracov od 2 do %d", MAX_POCET_HRACOV));
+        this.pocetHracov = ZKlavesnice.readInt(String.format("Zadaj pocet hracov od 2 do %d: ", MAX_POCET_HRACOV));
         while (true){
             if(pocetHracov < 2 || pocetHracov > 6){ //aby nedal menej ako 2 a viac ako 6
-                pocetHracov = KeyboardInput.readInt(String.format("Zadaj pocet hracov od 2 do %d", MAX_POCET_HRACOV));
+                System.out.printf("Minimálny počet hráčov je 2 a maximálny počet hráčov je %d takže znova!\n", MAX_POCET_HRACOV);
+                pocetHracov = ZKlavesnice.readInt(String.format("Zadaj pocet hracov od 2 do %d: ", MAX_POCET_HRACOV));
                 continue;
             }
             this.hraci = new Hrac[pocetHracov];
@@ -29,6 +32,7 @@ public class StreleneKacky {
         }
 
         System.out.println("Počet hráčov je : " + pocetHracov);
+
         getHraci();
         startHry();
     }
@@ -40,6 +44,7 @@ public class StreleneKacky {
         //kod here
 
         System.out.println("Hra sa skončila");
+        System.out.println("Jakub Chrappa ais: 111286");
         //vitazHry();  //funguje to len nechcem ten vypis teraz
 
     }
@@ -54,7 +59,7 @@ public class StreleneKacky {
     public void getHraci() {
         System.out.println("Dnes hrá : ");
         for (int i = 0; i < pocetHracov; i++) {
-            System.out.println(this.hraci[i].getMeno() + this.hraci[i].getPoradoveCislo());
+            System.out.println(this.hraci[i].getMeno() + this.hraci[i].getPoradoveCislo() + " -> počet životov: " + this.hraci[i].getPocetZivotov());
         }
     }
 
