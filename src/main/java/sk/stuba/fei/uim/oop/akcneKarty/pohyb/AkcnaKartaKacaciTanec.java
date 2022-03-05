@@ -1,4 +1,12 @@
 package sk.stuba.fei.uim.oop.akcneKarty.pohyb;
 
-public class AkcnaKartaKacaciTanec {
+import sk.stuba.fei.uim.oop.akcneKarty.AkcneKarty;
+import sk.stuba.fei.uim.oop.hrac.Hrac;
+
+public class AkcnaKartaKacaciTanec extends AkcneKarty {
+
+    @Override
+    public void pouzil(Hrac hrac) {
+
+    }
 }
