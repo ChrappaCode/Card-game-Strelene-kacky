@@ -14,6 +14,14 @@ public class Hrac {
         this.hracZije = true;
     }
 
+    public Hrac(String meno , int poradoveCislo) {
+        this.meno = meno;
+        this.poradoveCislo = poradoveCislo;
+        this.pocetZivotov = 5;
+        this.hracZije = true;
+    }
+
+
     public boolean hracDostalZasah() {
         this.pocetZivotov --;
         if(pocetZivotov == 0){
@@ -22,7 +30,7 @@ public class Hrac {
         return hracZije;
     }
 
-    public boolean isHracZije() {
+    public boolean getHracZije() {
         return hracZije;
     }
 

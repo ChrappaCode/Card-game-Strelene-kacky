@@ -1,10 +1,8 @@
 package sk.stuba.fei.uim.oop.streleneKacky;
 
 import sk.stuba.fei.uim.oop.hrac.Hrac;
-import sk.stuba.fei.uim.oop.utility.KeyboardInput;
 import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
-import java.util.Objects;
 
 public class StreleneKacky {
 
@@ -27,13 +25,12 @@ public class StreleneKacky {
             this.hraci = new Hrac[pocetHracov];
             break;
         }
-        for (int i = 0; i < pocetHracov; i++) {                             //tu si vytvorim hracov
-            this.hraci[i] = new Hrac(i + 1);
-        }
+
+        generujHracov();
 
         System.out.println("Počet hráčov je : " + pocetHracov);
-
         getHraci();
+
         startHry();
     }
 
@@ -45,7 +42,21 @@ public class StreleneKacky {
 
         System.out.println("Hra sa skončila");
         System.out.println("Jakub Chrappa ais: 111286");
-        //vitazHry();  //funguje to len nechcem ten vypis teraz
+        vitazHry();  //funguje to len nechcem ten vypis teraz
+
+    }
+
+    private void generujHracov(){
+
+        int vlastneMeno = ZKlavesnice.readInt("Chcete zadat vlastné mená postáv ak áno zadajte \"1\"");
+        for (int i = 0; i < pocetHracov; i++) {//tu si vytvorim hracov
+            if(vlastneMeno == 1) {
+                this.hraci[i] = new Hrac(ZKlavesnice.readString(String.format("Zadajte meno hráča %d: ", i+1)), i + 1);
+            }
+            else {
+                this.hraci[i] = new Hrac(i + 1);
+            }
+        }
 
     }
 
@@ -59,14 +70,14 @@ public class StreleneKacky {
     public void getHraci() {
         System.out.println("Dnes hrá : ");
         for (int i = 0; i < pocetHracov; i++) {
-            System.out.println(this.hraci[i].getMeno() + this.hraci[i].getPoradoveCislo() + " -> počet životov: " + this.hraci[i].getPocetZivotov());
+            System.out.println(this.hraci[i].getMeno() +" "+ this.hraci[i].getPoradoveCislo() + " -> počet životov: " + this.hraci[i].getPocetZivotov());
         }
     }
 
     private void vitazHry() {
         for (int i = 0; i < pocetHracov; i++) {
-            if (this.hraci[i].isHracZije()) {
-                System.out.println("Vyhral hráč s poradovím číslom: " + this.hraci[i].getPoradoveCislo());
+            if (this.hraci[i].getHracZije()) {
+                System.out.println("Víťazom sa stáva : " + this.hraci[i].getMeno() + " " + this.hraci[i].getPoradoveCislo());
             }
         }
     }
