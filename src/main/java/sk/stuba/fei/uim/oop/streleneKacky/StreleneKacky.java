@@ -1,10 +1,12 @@
 package sk.stuba.fei.uim.oop.streleneKacky;
 
 import sk.stuba.fei.uim.oop.akcneKarty.AkcneKarty;
-import sk.stuba.fei.uim.oop.akcneKarty.zamierenieStrelba.AkcnaKartaVystrelit;
-import sk.stuba.fei.uim.oop.akcneKarty.zamierenieStrelba.AkcnaKartaZamierit;
+import sk.stuba.fei.uim.oop.akcneKarty.pohyb.*;
+import sk.stuba.fei.uim.oop.akcneKarty.zamierenieStrelba.*;
 import sk.stuba.fei.uim.oop.hrac.Hrac;
 import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
+import java.util.List;
+
 
 
 public class StreleneKacky {
@@ -41,7 +43,7 @@ public class StreleneKacky {
 
         akcneKarty.pouzil(this.hraci[1]);*/
 
-
+        novekarty();
         startHry();
     }
 
@@ -54,6 +56,20 @@ public class StreleneKacky {
         System.out.println("Hra sa skončila");
         vitazHry();  //funguje to len nechcem ten vypis teraz
         System.out.println("Jakub Chrappa ais: 111286");
+
+    }
+
+    private void novekarty(){
+
+        List<AkcneKarty> akcneKarty = List.of(
+                new AkcnaKartaVystrelit(),
+                new AkcnaKartaZamierit(),
+                new AkcnaKartaDivokyBill(),
+                new AkcnaKartaKacaciPochod(),
+                new AkcnaKartaKacaciTanec(),
+                new AkcnaKartaRosambo(),
+                new AkcnaKartaTurbokacka()
+        );
 
     }
 
@@ -78,7 +94,7 @@ public class StreleneKacky {
     }
 
 
-    public void getHraci() {
+    private void getHraci() {
         for (int i = 0; i < pocetHracov; i++) {
             System.out.println(this.hraci[i].getMeno() +" "+ this.hraci[i].getPoradoveCislo() + " -> počet životov: " + this.hraci[i].getPocetZivotov());
         }
