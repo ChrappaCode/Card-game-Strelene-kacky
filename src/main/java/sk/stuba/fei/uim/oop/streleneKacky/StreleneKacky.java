@@ -1,5 +1,8 @@
 package sk.stuba.fei.uim.oop.streleneKacky;
 
+import sk.stuba.fei.uim.oop.akcneKarty.AkcneKarty;
+import sk.stuba.fei.uim.oop.akcneKarty.zamierenieStrelba.AkcnaKartaVystrelit;
+import sk.stuba.fei.uim.oop.akcneKarty.zamierenieStrelba.AkcnaKartaZamierit;
 import sk.stuba.fei.uim.oop.hrac.Hrac;
 import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
@@ -28,8 +31,16 @@ public class StreleneKacky {
 
         generujHracov();
 
+
+
         System.out.println("Počet hráčov je : " + pocetHracov);
+        System.out.println("Dnes hrá : ");
         getHraci();
+
+        /*AkcneKarty akcneKarty = new AkcnaKartaVystrelit(); test
+
+        akcneKarty.pouzil(this.hraci[1]);*/
+
 
         startHry();
     }
@@ -41,8 +52,8 @@ public class StreleneKacky {
         //kod here
 
         System.out.println("Hra sa skončila");
-        System.out.println("Jakub Chrappa ais: 111286");
         vitazHry();  //funguje to len nechcem ten vypis teraz
+        System.out.println("Jakub Chrappa ais: 111286");
 
     }
 
@@ -68,7 +79,6 @@ public class StreleneKacky {
 
 
     public void getHraci() {
-        System.out.println("Dnes hrá : ");
         for (int i = 0; i < pocetHracov; i++) {
             System.out.println(this.hraci[i].getMeno() +" "+ this.hraci[i].getPoradoveCislo() + " -> počet životov: " + this.hraci[i].getPocetZivotov());
         }
