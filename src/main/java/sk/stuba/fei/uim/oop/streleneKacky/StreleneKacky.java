@@ -63,12 +63,12 @@ public class StreleneKacky {
 
         List<AkcneKarty> akcneKarty = List.of(
                 new AkcnaKartaVystrelit(),
-                new AkcnaKartaZamierit(),
-                new AkcnaKartaDivokyBill(),
-                new AkcnaKartaKacaciPochod(),
-                new AkcnaKartaKacaciTanec(),
-                new AkcnaKartaRosambo(),
-                new AkcnaKartaTurbokacka()
+                    new AkcnaKartaZamierit(),
+                        new AkcnaKartaDivokyBill(),
+                             new AkcnaKartaKacaciPochod(),
+                                new AkcnaKartaKacaciTanec(),
+                                    new AkcnaKartaRosambo(),
+                                        new AkcnaKartaTurbokacka()
         );
 
     }
