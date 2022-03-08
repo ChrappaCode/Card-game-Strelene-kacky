@@ -1,11 +1,17 @@
 package sk.stuba.fei.uim.oop.hrac;
 
+import sk.stuba.fei.uim.oop.akcneKarty.AkcneKarty;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Hrac {
 
     private final String meno;
     private final int poradoveCislo;
     private int pocetZivotov;
     private boolean hracZije;
+    private ArrayList<AkcneKarty> akcneKarty;
 
     public Hrac(int poradoveCislo) {
         this.meno = "Hráč ";
@@ -29,6 +35,15 @@ public class Hrac {
         }
         return hracZije;
     }
+
+    public void potiaholKartu(AkcneKarty akcneKarta) {
+        this.akcneKarty.add(akcneKarta);
+    }
+
+
+    /*public ArrayList<AkcneKarty> getAkcneKarty() {
+        return akcneKarty;
+    }*/
 
     public boolean getHracZije() {
         return hracZije;

@@ -39,9 +39,10 @@ public class StreleneKacky {
         System.out.println("Dnes hrá : ");
         getHraci();
 
-        /*AkcneKarty akcneKarty = new AkcnaKartaVystrelit(); test
 
-        akcneKarty.pouzil(this.hraci[1]);*/
+        //akcneKarty.pouzil(this.hraci[1]);
+
+        //System.out.println(this.hraci[1].getAkcneKarty());
 
         novekarty();
         startHry();
