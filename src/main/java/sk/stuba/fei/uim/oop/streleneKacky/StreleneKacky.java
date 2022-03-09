@@ -35,6 +35,7 @@ public class StreleneKacky {
         generujHracov();
 
 
+
         System.out.println("Počet hráčov je : " + pocetHracov);
         System.out.println("Dnes hrá : ");
         getHraci();
@@ -83,11 +84,8 @@ public class StreleneKacky {
         balikAkcneKarty.add(new AkcnaKartaKacaciTanec());
 
         System.out.println(balikAkcneKarty);
-
         zamiesajKarty();
-
         System.out.println(balikAkcneKarty);
-
 
         /*this.hraci[1].potiaholKartu(balikAkcneKarty.get(1));
         balikAkcneKarty.remove(1);
@@ -136,10 +134,10 @@ public class StreleneKacky {
     private void zamiesajKarty(){
 
         for (int i = 0; i < balikAkcneKarty.size(); i++) {
-            int j = (int)(Math.random() * balikAkcneKarty.size()); // Get a random index out of 52
-            AkcneKarty temp = balikAkcneKarty.get(i); // Swap the cards
-            balikAkcneKarty.set(i, balikAkcneKarty.get(j));
-            balikAkcneKarty.set(j, temp);
+            int nahodnaPremenna = (int)(Math.random() * balikAkcneKarty.size());
+            AkcneKarty temp = balikAkcneKarty.get(i);
+            balikAkcneKarty.set(i, balikAkcneKarty.get(nahodnaPremenna));
+            balikAkcneKarty.set(nahodnaPremenna, temp);
         }
     }
 
