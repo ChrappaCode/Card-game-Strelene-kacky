@@ -4,6 +4,8 @@ import sk.stuba.fei.uim.oop.hrac.Hrac;
 
 public abstract class AkcneKarty {
 
+    String meno;
+
     public abstract void pouzil(Hrac hrac);
 
 }

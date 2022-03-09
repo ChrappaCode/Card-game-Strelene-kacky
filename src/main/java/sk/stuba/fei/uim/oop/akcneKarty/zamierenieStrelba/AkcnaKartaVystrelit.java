@@ -5,6 +5,8 @@ import sk.stuba.fei.uim.oop.hrac.Hrac;
 
 public class AkcnaKartaVystrelit extends AkcneKarty {
 
+    private static final String MENO = "Vystreliť";
+
 
     @Override
     public void pouzil(Hrac hrac) {
@@ -12,4 +14,5 @@ public class AkcnaKartaVystrelit extends AkcneKarty {
         hrac.hracDostalZasah();
 
     }
+
 }

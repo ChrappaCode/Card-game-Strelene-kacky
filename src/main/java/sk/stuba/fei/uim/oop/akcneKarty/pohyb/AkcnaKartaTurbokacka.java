@@ -5,6 +5,9 @@ import sk.stuba.fei.uim.oop.hrac.Hrac;
 
 public class AkcnaKartaTurbokacka extends AkcneKarty {
 
+    private static final String MENO = "Turbokacka";
+
+
     @Override
     public void pouzil(Hrac hrac) {
 

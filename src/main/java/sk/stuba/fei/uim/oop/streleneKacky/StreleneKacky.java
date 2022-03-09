@@ -1,13 +1,8 @@
 package sk.stuba.fei.uim.oop.streleneKacky;
 
 import sk.stuba.fei.uim.oop.akcneKarty.AkcneKarty;
-import sk.stuba.fei.uim.oop.akcneKarty.pohyb.AkcnaKartaKacaciPochod;
-import sk.stuba.fei.uim.oop.akcneKarty.pohyb.AkcnaKartaKacaciTanec;
-import sk.stuba.fei.uim.oop.akcneKarty.pohyb.AkcnaKartaRosambo;
-import sk.stuba.fei.uim.oop.akcneKarty.pohyb.AkcnaKartaTurbokacka;
-import sk.stuba.fei.uim.oop.akcneKarty.zamierenieStrelba.AkcnaKartaDivokyBill;
-import sk.stuba.fei.uim.oop.akcneKarty.zamierenieStrelba.AkcnaKartaVystrelit;
-import sk.stuba.fei.uim.oop.akcneKarty.zamierenieStrelba.AkcnaKartaZamierit;
+import sk.stuba.fei.uim.oop.akcneKarty.pohyb.*;
+import sk.stuba.fei.uim.oop.akcneKarty.zamierenieStrelba.*;
 import sk.stuba.fei.uim.oop.hrac.Hrac;
 import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
@@ -50,7 +45,9 @@ public class StreleneKacky {
 
         //System.out.println(this.hraci[1].getAkcneKarty());
 
+        System.out.println("toto ma na ruke 1:");
         novyBalik();
+        System.out.println("------------------------");
         startHry();
     }
 
@@ -76,6 +73,13 @@ public class StreleneKacky {
         balikAkcneKarty.add(new AkcnaKartaVystrelit());
         balikAkcneKarty.add(new AkcnaKartaVystrelit());
         balikAkcneKarty.add(new AkcnaKartaVystrelit());
+
+        this.hraci[1].potiaholKartu(balikAkcneKarty.get(1));
+        balikAkcneKarty.remove(1);
+        this.hraci[1].potiaholKartu(balikAkcneKarty.get(4));
+        balikAkcneKarty.remove(4);
+
+        this.hraci[1].coMaHracNaRuke();
 
     }
 

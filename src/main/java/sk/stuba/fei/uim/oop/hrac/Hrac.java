@@ -1,9 +1,9 @@
 package sk.stuba.fei.uim.oop.hrac;
 
 import sk.stuba.fei.uim.oop.akcneKarty.AkcneKarty;
+import sk.stuba.fei.uim.oop.akcneKarty.zamierenieStrelba.AkcnaKartaVystrelit;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Hrac {
 
@@ -11,7 +11,7 @@ public class Hrac {
     private final int poradoveCislo;
     private int pocetZivotov;
     private boolean hracZije;
-    private ArrayList<AkcneKarty> akcneKarty;
+    private ArrayList<AkcneKarty> ruka = new ArrayList<AkcneKarty>();
 
     public Hrac(int poradoveCislo) {
         this.meno = "Hráč ";
@@ -36,14 +36,14 @@ public class Hrac {
         return hracZije;
     }
 
-    public void potiaholKartu(AkcneKarty akcneKarta) {
-        this.akcneKarty.add(akcneKarta);
+    public void potiaholKartu(AkcneKarty akcneKarty) {
+        this.ruka.add(akcneKarty);
     }
 
+    public void coMaHracNaRuke() {
+        System.out.println(this.ruka);
+    }
 
-    /*public ArrayList<AkcneKarty> getAkcneKarty() {
-        return akcneKarty;
-    }*/
 
     public boolean getHracZije() {
         return hracZije;
