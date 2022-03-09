@@ -15,7 +15,7 @@ public class StreleneKacky {
     public static final int MAX_POCET_HRACOV = 6;
     private final Hrac[] hraci;
     private int pocetHracov;
-    private int hracNaTahu = 0;
+    private int ktoJeNaTahu = 0;
     ArrayList<AkcneKarty> balikAkcneKarty;
 
     public StreleneKacky(){
@@ -31,61 +31,68 @@ public class StreleneKacky {
             this.hraci = new Hrac[pocetHracov];
             break;
         }
-
         generujHracov();
-
-
 
         System.out.println("Počet hráčov je : " + pocetHracov);
         System.out.println("Dnes hrá : ");
         getHraci();
 
 
-        //akcneKarty.pouzil(this.hraci[1]);
-
-        //System.out.println(this.hraci[1].getAkcneKarty());
-
-        System.out.println("toto ma na ruke 1:");
-        novyBalik();
-        System.out.println("------------------------");
         startHry();
     }
 
     private void startHry() {
 
         System.out.println("Hra sa začala");
+        System.out.println("toto je balik akcnych kariet:");
+        novyBalik();
+        System.out.println(balikAkcneKarty);
+        zamiesajKarty();
+        System.out.println(balikAkcneKarty);
+        System.out.println("------------------------");
+
+        Hrac hracNaTahu = this.hraci[ktoJeNaTahu];
+
+        hracNaTahu.potiaholKartu(balikAkcneKarty.get(0));
+        hracNaTahu.potiaholKartu(new AkcnaKartaVystrelit());
+        hracNaTahu.potiaholKartu(balikAkcneKarty.get(2));
+        hracNaTahu.coMaHracNaRuke();
+        hracNaTahu.ruka.get((ZKlavesnice.readInt("ktorú kartu chceš zahrať (1 , 2 , 3)"))-1).pouzil(hracNaTahu);
+
+        getHraci();
 
         //kod here
+
+        prepniHraca();
+        System.out.println(ktoJeNaTahu);
 
         System.out.println("Hra sa skončila");
         vitazHry();  //funguje to len nechcem ten vypis teraz
         System.out.println("Jakub Chrappa ais: 111286");
-
     }
 
     private void novyBalik(){
 
         this.balikAkcneKarty = new ArrayList<>();
 
-        for(int i = 10; i >= 0; i--){
+        for(int i = 10; i > 0; i--){
             balikAkcneKarty.add(new AkcnaKartaZamierit());
         }
-        for(int i = 12; i >= 0; i--){
+        for(int i = 12; i > 0; i--){
             balikAkcneKarty.add(new AkcnaKartaVystrelit());
         }
-        for(int i = 2; i >= 0; i--){
+        for(int i = 2; i > 0; i--){
             balikAkcneKarty.add(new AkcnaKartaDivokyBill());
+        }
+        for(int i = 2; i > 0; i--){
             balikAkcneKarty.add(new AkcnaKartaRosambo());
         }
-        for(int i = 6; i >= 0; i--){
+        for(int i = 6; i > 0; i--){
             balikAkcneKarty.add(new AkcnaKartaKacaciPochod());
         }
         balikAkcneKarty.add(new AkcnaKartaTurbokacka());
         balikAkcneKarty.add(new AkcnaKartaKacaciTanec());
 
-        System.out.println(balikAkcneKarty);
-        zamiesajKarty();
-        System.out.println(balikAkcneKarty);
 
         /*this.hraci[1].potiaholKartu(balikAkcneKarty.get(1));
         balikAkcneKarty.remove(1);
@@ -107,13 +114,12 @@ public class StreleneKacky {
                 this.hraci[i] = new Hrac(i + 1);
             }
         }
-
     }
 
     private void prepniHraca() {
-        this.hracNaTahu ++;
-        System.out.println(this.hracNaTahu);
-        this.hracNaTahu = (this.hracNaTahu % pocetHracov);
+        this.ktoJeNaTahu ++;
+        System.out.println(this.ktoJeNaTahu);
+        this.ktoJeNaTahu = (this.ktoJeNaTahu % pocetHracov);
     }
 
 
@@ -132,7 +138,6 @@ public class StreleneKacky {
     }
 
     private void zamiesajKarty(){
-
         for (int i = 0; i < balikAkcneKarty.size(); i++) {
             int nahodnaPremenna = (int)(Math.random() * balikAkcneKarty.size());
             AkcneKarty temp = balikAkcneKarty.get(i);

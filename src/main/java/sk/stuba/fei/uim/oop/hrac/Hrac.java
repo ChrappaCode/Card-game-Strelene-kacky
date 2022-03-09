@@ -1,7 +1,6 @@
 package sk.stuba.fei.uim.oop.hrac;
 
 import sk.stuba.fei.uim.oop.akcneKarty.AkcneKarty;
-import sk.stuba.fei.uim.oop.akcneKarty.zamierenieStrelba.AkcnaKartaVystrelit;
 
 import java.util.ArrayList;
 
@@ -11,7 +10,7 @@ public class Hrac {
     private final int poradoveCislo;
     private int pocetZivotov;
     private boolean hracZije;
-    private ArrayList<AkcneKarty> ruka = new ArrayList<AkcneKarty>();
+    public ArrayList<AkcneKarty> ruka = new ArrayList<>();
 
     public Hrac(int poradoveCislo) {
         this.meno = "Hráč ";
