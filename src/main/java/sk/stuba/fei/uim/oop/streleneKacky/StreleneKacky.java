@@ -35,7 +35,6 @@ public class StreleneKacky {
         generujHracov();
 
 
-
         System.out.println("Počet hráčov je : " + pocetHracov);
         System.out.println("Dnes hrá : ");
         getHraci();
@@ -67,19 +66,35 @@ public class StreleneKacky {
 
         this.balikAkcneKarty = new ArrayList<>();
 
-        balikAkcneKarty.add(new AkcnaKartaDivokyBill());
-        balikAkcneKarty.add(new AkcnaKartaDivokyBill());
-        balikAkcneKarty.add(new AkcnaKartaDivokyBill());
-        balikAkcneKarty.add(new AkcnaKartaVystrelit());
-        balikAkcneKarty.add(new AkcnaKartaVystrelit());
-        balikAkcneKarty.add(new AkcnaKartaVystrelit());
+        for(int i = 10; i >= 0; i--){
+            balikAkcneKarty.add(new AkcnaKartaZamierit());
+        }
+        for(int i = 12; i >= 0; i--){
+            balikAkcneKarty.add(new AkcnaKartaVystrelit());
+        }
+        for(int i = 2; i >= 0; i--){
+            balikAkcneKarty.add(new AkcnaKartaDivokyBill());
+            balikAkcneKarty.add(new AkcnaKartaRosambo());
+        }
+        for(int i = 6; i >= 0; i--){
+            balikAkcneKarty.add(new AkcnaKartaKacaciPochod());
+        }
+        balikAkcneKarty.add(new AkcnaKartaTurbokacka());
+        balikAkcneKarty.add(new AkcnaKartaKacaciTanec());
 
-        this.hraci[1].potiaholKartu(balikAkcneKarty.get(1));
+        System.out.println(balikAkcneKarty);
+
+        zamiesajKarty();
+
+        System.out.println(balikAkcneKarty);
+
+
+        /*this.hraci[1].potiaholKartu(balikAkcneKarty.get(1));
         balikAkcneKarty.remove(1);
         this.hraci[1].potiaholKartu(balikAkcneKarty.get(4));
         balikAkcneKarty.remove(4);
 
-        this.hraci[1].coMaHracNaRuke();
+        this.hraci[1].coMaHracNaRuke();*/
 
     }
 
@@ -117,4 +132,16 @@ public class StreleneKacky {
             }
         }
     }
+
+    private void zamiesajKarty(){
+
+        for (int i = 0; i < balikAkcneKarty.size(); i++) {
+            int j = (int)(Math.random() * balikAkcneKarty.size()); // Get a random index out of 52
+            AkcneKarty temp = balikAkcneKarty.get(i); // Swap the cards
+            balikAkcneKarty.set(i, balikAkcneKarty.get(j));
+            balikAkcneKarty.set(j, temp);
+        }
+    }
+
+
 }
