@@ -1,11 +1,17 @@
 package sk.stuba.fei.uim.oop.streleneKacky;
 
 import sk.stuba.fei.uim.oop.akcneKarty.AkcneKarty;
-import sk.stuba.fei.uim.oop.akcneKarty.pohyb.*;
-import sk.stuba.fei.uim.oop.akcneKarty.zamierenieStrelba.*;
+import sk.stuba.fei.uim.oop.akcneKarty.pohyb.AkcnaKartaKacaciPochod;
+import sk.stuba.fei.uim.oop.akcneKarty.pohyb.AkcnaKartaKacaciTanec;
+import sk.stuba.fei.uim.oop.akcneKarty.pohyb.AkcnaKartaRosambo;
+import sk.stuba.fei.uim.oop.akcneKarty.pohyb.AkcnaKartaTurbokacka;
+import sk.stuba.fei.uim.oop.akcneKarty.zamierenieStrelba.AkcnaKartaDivokyBill;
+import sk.stuba.fei.uim.oop.akcneKarty.zamierenieStrelba.AkcnaKartaVystrelit;
+import sk.stuba.fei.uim.oop.akcneKarty.zamierenieStrelba.AkcnaKartaZamierit;
 import sk.stuba.fei.uim.oop.hrac.Hrac;
 import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
-import java.util.List;
+
+import java.util.ArrayList;
 
 
 
@@ -15,7 +21,7 @@ public class StreleneKacky {
     private final Hrac[] hraci;
     private int pocetHracov;
     private int hracNaTahu = 0;
-
+    ArrayList<AkcneKarty> balikAkcneKarty;
 
     public StreleneKacky(){
 
@@ -44,7 +50,7 @@ public class StreleneKacky {
 
         //System.out.println(this.hraci[1].getAkcneKarty());
 
-        novekarty();
+        novyBalik();
         startHry();
     }
 
@@ -60,17 +66,16 @@ public class StreleneKacky {
 
     }
 
-    private void novekarty(){
+    private void novyBalik(){
 
-        List<AkcneKarty> akcneKarty = List.of(
-                new AkcnaKartaVystrelit(),
-                    new AkcnaKartaZamierit(),
-                        new AkcnaKartaDivokyBill(),
-                             new AkcnaKartaKacaciPochod(),
-                                new AkcnaKartaKacaciTanec(),
-                                    new AkcnaKartaRosambo(),
-                                        new AkcnaKartaTurbokacka()
-        );
+        this.balikAkcneKarty = new ArrayList<>();
+
+        balikAkcneKarty.add(new AkcnaKartaDivokyBill());
+        balikAkcneKarty.add(new AkcnaKartaDivokyBill());
+        balikAkcneKarty.add(new AkcnaKartaDivokyBill());
+        balikAkcneKarty.add(new AkcnaKartaVystrelit());
+        balikAkcneKarty.add(new AkcnaKartaVystrelit());
+        balikAkcneKarty.add(new AkcnaKartaVystrelit());
 
     }
 
