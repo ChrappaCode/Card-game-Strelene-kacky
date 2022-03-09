@@ -7,7 +7,8 @@ import sk.stuba.fei.uim.oop.hrac.Hrac;
 import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
 import java.util.ArrayList;
-
+import java.util.Collection;
+import java.util.Collections;
 
 
 public class StreleneKacky {
@@ -145,6 +146,5 @@ public class StreleneKacky {
             balikAkcneKarty.set(nahodnaPremenna, temp);
         }
     }
-
 
 }
