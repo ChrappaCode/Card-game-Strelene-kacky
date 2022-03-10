@@ -7,6 +7,9 @@ public class AkcnaKartaVystrelit extends AkcneKarty {
 
     private static final String MENO = "Vystreliť";
 
+    public AkcnaKartaVystrelit(){
+        super(MENO);
+    }
 
     @Override
     public void pouzil(Hrac hrac) {

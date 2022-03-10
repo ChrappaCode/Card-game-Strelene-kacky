@@ -7,6 +7,9 @@ public class AkcnaKartaZamierit extends AkcneKarty {
 
     private static final String MENO = "Zamieriť";
 
+    public AkcnaKartaZamierit(){
+        super(MENO);
+    }
 
     @Override
     public void pouzil(Hrac hrac) {

@@ -7,6 +7,9 @@ public class AkcnaKartaTurbokacka extends AkcneKarty {
 
     private static final String MENO = "Turbokacka";
 
+    public AkcnaKartaTurbokacka(){
+        super(MENO);
+    }
 
     @Override
     public void pouzil(Hrac hrac) {

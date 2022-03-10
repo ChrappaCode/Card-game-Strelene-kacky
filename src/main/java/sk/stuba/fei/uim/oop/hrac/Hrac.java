@@ -40,7 +40,9 @@ public class Hrac {
     }
 
     public void coMaHracNaRuke() {
-        System.out.println(this.ruka);
+        for (int i = 0; i < ruka.size() ; i++) {
+            System.out.println(String.format("karta %d • ", i+1) + ruka.get(i).getMeno());
+        }
     }
 
 

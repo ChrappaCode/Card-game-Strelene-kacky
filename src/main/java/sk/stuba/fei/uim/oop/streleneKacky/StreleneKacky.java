@@ -7,8 +7,7 @@ import sk.stuba.fei.uim.oop.hrac.Hrac;
 import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+
 
 
 public class StreleneKacky {
@@ -19,7 +18,7 @@ public class StreleneKacky {
     private int ktoJeNaTahu = 0;
     ArrayList<AkcneKarty> balikAkcneKarty;
 
-    public StreleneKacky(){
+    public StreleneKacky() {
 
         System.out.println("Strelené Kačky Jakub Chrappa");
         this.pocetHracov = ZKlavesnice.readInt(String.format("Zadaj pocet hracov od 2 do %d: ", MAX_POCET_HRACOV));
@@ -45,20 +44,41 @@ public class StreleneKacky {
     private void startHry() {
 
         System.out.println("Hra sa začala");
-        System.out.println("toto je balik akcnych kariet:");
+        System.out.println("toto je balik akcnych kariet: ");
         novyBalik();
-        System.out.println(balikAkcneKarty);
         zamiesajKarty();
-        System.out.println(balikAkcneKarty);
+        for (AkcneKarty akcneKarty : balikAkcneKarty) {
+            System.out.println("• " + akcneKarty.getMeno());
+        }
         System.out.println("------------------------");
 
         Hrac hracNaTahu = this.hraci[ktoJeNaTahu];
 
-        hracNaTahu.potiaholKartu(balikAkcneKarty.get(0));
-        hracNaTahu.potiaholKartu(new AkcnaKartaVystrelit());
-        hracNaTahu.potiaholKartu(balikAkcneKarty.get(2));
+        /*hracNaTahu.potiaholKartu(balikAkcneKarty.get(0));
+        hracNaTahu.potiaholKartu(balikAkcneKarty.get(1));
+        hracNaTahu.potiaholKartu(balikAkcneKarty.get(2));*/
+
+        hracTahaKartu(hracNaTahu);
+        hracTahaKartu(hracNaTahu);
+        hracTahaKartu(hracNaTahu);
+
+        System.out.println("Tieto karty má " + hracNaTahu.getMeno() +" "+ hracNaTahu.getPoradoveCislo());
         hracNaTahu.coMaHracNaRuke();
-        hracNaTahu.ruka.get((ZKlavesnice.readInt("ktorú kartu chceš zahrať (1 , 2 , 3)"))-1).pouzil(hracNaTahu);
+
+        for (AkcneKarty akcneKarty : balikAkcneKarty) {
+            System.out.println("• " + akcneKarty.getMeno());
+        }
+        System.out.println("------------------------");
+
+
+        hracZahralKartu(hracNaTahu);
+
+        hracNaTahu.coMaHracNaRuke();
+
+        for (AkcneKarty akcneKarty : balikAkcneKarty) {
+            System.out.println("• " + akcneKarty.getMeno());
+        }
+        System.out.println("------------------------");
 
         getHraci();
 
@@ -72,7 +92,7 @@ public class StreleneKacky {
         System.out.println("Jakub Chrappa ais: 111286");
     }
 
-    private void novyBalik(){
+    private void novyBalik() {
 
         this.balikAkcneKarty = new ArrayList<>();
 
@@ -94,17 +114,9 @@ public class StreleneKacky {
         balikAkcneKarty.add(new AkcnaKartaTurbokacka());
         balikAkcneKarty.add(new AkcnaKartaKacaciTanec());
 
-
-        /*this.hraci[1].potiaholKartu(balikAkcneKarty.get(1));
-        balikAkcneKarty.remove(1);
-        this.hraci[1].potiaholKartu(balikAkcneKarty.get(4));
-        balikAkcneKarty.remove(4);
-
-        this.hraci[1].coMaHracNaRuke();*/
-
     }
 
-    private void generujHracov(){
+    private void generujHracov() {
 
         int vlastneMeno = ZKlavesnice.readInt("Chcete zadat vlastné mená postáv ak áno zadajte \"1\"");
         for (int i = 0; i < pocetHracov; i++) {//tu si vytvorim hracov
@@ -115,6 +127,19 @@ public class StreleneKacky {
                 this.hraci[i] = new Hrac(i + 1);
             }
         }
+    }
+
+    private void hracTahaKartu(Hrac hrac) {
+        hrac.potiaholKartu(balikAkcneKarty.get(0));
+        balikAkcneKarty.remove(0);
+    }
+
+    private void hracZahralKartu(Hrac hrac){
+        int cisloKarty = ZKlavesnice.readInt("ktorú kartu chceš zahrať (1 , 2 , 3)");
+        hrac.ruka.get(cisloKarty - 1).pouzil(hrac);
+        balikAkcneKarty.add(hrac.ruka.get(cisloKarty - 1));
+        hrac.ruka.remove(cisloKarty - 1);
+        hracTahaKartu(hrac);
     }
 
     private void prepniHraca() {
@@ -138,7 +163,7 @@ public class StreleneKacky {
         }
     }
 
-    private void zamiesajKarty(){
+    private void zamiesajKarty() {
         for (int i = 0; i < balikAkcneKarty.size(); i++) {
             int nahodnaPremenna = (int)(Math.random() * balikAkcneKarty.size());
             AkcneKarty temp = balikAkcneKarty.get(i);

@@ -7,6 +7,9 @@ public class AkcnaKartaRosambo extends AkcneKarty {
 
     private static final String MENO = "Rosambo";
 
+    public AkcnaKartaRosambo(){
+        super(MENO);
+    }
 
     @Override
     public void pouzil(Hrac hrac) {
