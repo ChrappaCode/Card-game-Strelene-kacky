@@ -4,6 +4,7 @@ import sk.stuba.fei.uim.oop.akcneKarty.AkcneKarty;
 import sk.stuba.fei.uim.oop.akcneKarty.pohyb.*;
 import sk.stuba.fei.uim.oop.akcneKarty.zamierenieStrelba.*;
 import sk.stuba.fei.uim.oop.hrac.Hrac;
+import sk.stuba.fei.uim.oop.hraciePole.HraciePole;
 import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class StreleneKacky {
     private int pocetHracov;
     private int ktoJeNaTahu = 0;
     private ArrayList<AkcneKarty> balikAkcneKarty;
+    private ArrayList<HraciePole> hraciePole;
 
 
     public StreleneKacky() {
@@ -98,6 +100,12 @@ public class StreleneKacky {
         }
         balikAkcneKarty.add(new AkcnaKartaTurbokacka());
         balikAkcneKarty.add(new AkcnaKartaKacaciTanec());
+
+    }
+
+    private void novePole() {
+
+        this.hraciePole = new ArrayList<>();
 
     }
 
