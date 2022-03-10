@@ -51,7 +51,6 @@ public class StreleneKacky {
 
         Hrac hracNaTahu = this.hraci[ktoJeNaTahu];
 
-
         hracNaTahu.hracTahaKartu(balikAkcneKarty);
         hracNaTahu.hracTahaKartu(balikAkcneKarty);
         hracNaTahu.hracTahaKartu(balikAkcneKarty);
