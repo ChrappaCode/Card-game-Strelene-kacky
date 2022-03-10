@@ -9,14 +9,14 @@ import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 import java.util.ArrayList;
 
 
-
 public class StreleneKacky {
 
     public static final int MAX_POCET_HRACOV = 6;
     private final Hrac[] hraci;
     private int pocetHracov;
     private int ktoJeNaTahu = 0;
-    ArrayList<AkcneKarty> balikAkcneKarty;
+    private ArrayList<AkcneKarty> balikAkcneKarty;
+
 
     public StreleneKacky() {
 
@@ -47,38 +47,24 @@ public class StreleneKacky {
         System.out.println("toto je balik akcnych kariet: ");
         novyBalik();
         zamiesajKarty();
-        for (AkcneKarty akcneKarty : balikAkcneKarty) {
-            System.out.println("• " + akcneKarty.getMeno());
-        }
-        System.out.println("------------------------");
+        vypisBalicek();
 
         Hrac hracNaTahu = this.hraci[ktoJeNaTahu];
 
-        /*hracNaTahu.potiaholKartu(balikAkcneKarty.get(0));
-        hracNaTahu.potiaholKartu(balikAkcneKarty.get(1));
-        hracNaTahu.potiaholKartu(balikAkcneKarty.get(2));*/
 
-        hracTahaKartu(hracNaTahu);
-        hracTahaKartu(hracNaTahu);
-        hracTahaKartu(hracNaTahu);
+        hracNaTahu.hracTahaKartu(balikAkcneKarty);
+        hracNaTahu.hracTahaKartu(balikAkcneKarty);
+        hracNaTahu.hracTahaKartu(balikAkcneKarty);
 
         System.out.println("Tieto karty má " + hracNaTahu.getMeno() +" "+ hracNaTahu.getPoradoveCislo());
         hracNaTahu.coMaHracNaRuke();
 
-        for (AkcneKarty akcneKarty : balikAkcneKarty) {
-            System.out.println("• " + akcneKarty.getMeno());
-        }
-        System.out.println("------------------------");
+        vypisBalicek();
 
-
-        hracZahralKartu(hracNaTahu);
-
+        hracNaTahu.hracZahralKartu(hracNaTahu , balikAkcneKarty);
         hracNaTahu.coMaHracNaRuke();
 
-        for (AkcneKarty akcneKarty : balikAkcneKarty) {
-            System.out.println("• " + akcneKarty.getMeno());
-        }
-        System.out.println("------------------------");
+        vypisBalicek();
 
         getHraci();
 
@@ -129,18 +115,6 @@ public class StreleneKacky {
         }
     }
 
-    private void hracTahaKartu(Hrac hrac) {
-        hrac.potiaholKartu(balikAkcneKarty.get(0));
-        balikAkcneKarty.remove(0);
-    }
-
-    private void hracZahralKartu(Hrac hrac){
-        int cisloKarty = ZKlavesnice.readInt("ktorú kartu chceš zahrať (1 , 2 , 3)");
-        hrac.ruka.get(cisloKarty - 1).pouzil(hrac);
-        balikAkcneKarty.add(hrac.ruka.get(cisloKarty - 1));
-        hrac.ruka.remove(cisloKarty - 1);
-        hracTahaKartu(hrac);
-    }
 
     private void prepniHraca() {
         this.ktoJeNaTahu ++;
@@ -172,4 +146,14 @@ public class StreleneKacky {
         }
     }
 
+    private void vypisBalicek() {
+        for (AkcneKarty akcneKarty : balikAkcneKarty) {
+            System.out.println("• " + akcneKarty.getMeno());
+        }
+        System.out.println("------------------------");
+    }
+
+    public ArrayList<AkcneKarty> getBalikAkcneKarty() {
+        return balikAkcneKarty;
+    }
 }

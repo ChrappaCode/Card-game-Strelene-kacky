@@ -1,6 +1,7 @@
 package sk.stuba.fei.uim.oop.hrac;
 
 import sk.stuba.fei.uim.oop.akcneKarty.AkcneKarty;
+import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
 import java.util.ArrayList;
 
@@ -10,7 +11,7 @@ public class Hrac {
     private final int poradoveCislo;
     private int pocetZivotov;
     private boolean hracZije;
-    public ArrayList<AkcneKarty> ruka = new ArrayList<>();
+    private final ArrayList<AkcneKarty> ruka = new ArrayList<>();
 
     public Hrac(int poradoveCislo) {
         this.meno = "Hráč ";
@@ -35,16 +36,25 @@ public class Hrac {
         return hracZije;
     }
 
-    public void potiaholKartu(AkcneKarty akcneKarty) {
-        this.ruka.add(akcneKarty);
+    public void hracTahaKartu(ArrayList<AkcneKarty> balikAkcneKarty) {
+        this.ruka.add(balikAkcneKarty.get(0));
+        balikAkcneKarty.remove(0);
     }
+
+    public void hracZahralKartu(Hrac hrac, ArrayList<AkcneKarty> balikAkcneKarty){
+        int cisloKarty = ZKlavesnice.readInt("ktorú kartu chceš zahrať (1 , 2 , 3)");
+        this.ruka.get(cisloKarty - 1).pouzil(hrac);
+        balikAkcneKarty.add(this.ruka.get(cisloKarty - 1));
+        this.ruka.remove(cisloKarty - 1);
+        hracTahaKartu(balikAkcneKarty);
+    }
+
 
     public void coMaHracNaRuke() {
         for (int i = 0; i < ruka.size() ; i++) {
             System.out.println(String.format("karta %d • ", i+1) + ruka.get(i).getMeno());
         }
     }
-
 
     public boolean getHracZije() {
         return hracZije;
