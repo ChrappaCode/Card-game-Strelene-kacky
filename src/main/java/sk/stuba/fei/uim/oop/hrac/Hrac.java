@@ -77,6 +77,7 @@ public class Hrac {
     public String getMeno() {
         return meno;
     }
+
     public int getPoradoveCislo() {
         return poradoveCislo;
     }

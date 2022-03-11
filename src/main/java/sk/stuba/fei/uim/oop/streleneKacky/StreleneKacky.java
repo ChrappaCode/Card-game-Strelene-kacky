@@ -5,7 +5,6 @@ import sk.stuba.fei.uim.oop.akcneKarty.pohyb.*;
 import sk.stuba.fei.uim.oop.akcneKarty.zamierenieStrelba.*;
 import sk.stuba.fei.uim.oop.hrac.Hrac;
 import sk.stuba.fei.uim.oop.hraciePole.HraciePole;
-import sk.stuba.fei.uim.oop.hraciePole.Kacka;
 import sk.stuba.fei.uim.oop.hraciePole.Voda;
 import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
@@ -19,7 +18,7 @@ public class StreleneKacky {
     private int pocetHracov;
     private int ktoJeNaTahu = 0;
     private ArrayList<AkcneKarty> balikAkcneKarty;
-    private ArrayList<HraciePole> hraciePole;
+    private ArrayList<HraciePole> balikHraciePole;
 
     public StreleneKacky() {
 
@@ -48,19 +47,19 @@ public class StreleneKacky {
 
         System.out.println("Hra sa začala");
         novyBalik();
-        zamiesajAkcneKarty();
+        zamiesajKarty();
 
         novePole();
 
         for (Hrac hrac : hraci) {
-            hrac.rozdajKacky(hrac, hraciePole);
+            hrac.rozdajKacky(hrac, balikHraciePole);
         }
-        zamiesajHraciePole();
+        zamiesajKarty(balikHraciePole);
 
 
         vypisPole();
 
-        System.out.println("hraje " + pocetHracov + " hracov " + "preto máme " + (hraciePole.size() - 5) + " utiek");
+        System.out.println("hraje " + pocetHracov + " hracov " + "preto máme " + (balikHraciePole.size() - 5) + " utiek");
 
         System.out.println(this.hraci[2].getMojeKacky().get(2).getMeno());
         System.out.println();
@@ -91,8 +90,8 @@ public class StreleneKacky {
         prepniHraca();
         System.out.println(ktoJeNaTahu);
 
-        System.out.println("Hra sa skončila");
         vitazHry();  //funguje to len nechcem ten vypis teraz*/
+        System.out.println("Hra sa skončila");
         System.out.println("Jakub Chrappa ais: 111286");
     }
 
@@ -122,10 +121,10 @@ public class StreleneKacky {
 
     private void novePole() {
 
-        this.hraciePole = new ArrayList<>();
+        this.balikHraciePole = new ArrayList<>();
 
         for(int i = 5; i > 0; i--){
-            hraciePole.add(new Voda());
+            balikHraciePole.add(new Voda());
         }
 
     }
@@ -165,7 +164,7 @@ public class StreleneKacky {
         }
     }
 
-    private void zamiesajAkcneKarty() {
+    private void zamiesajKarty() {
         for (int i = 0; i < balikAkcneKarty.size(); i++) {
             int nahodnaPremenna = (int)(Math.random() * balikAkcneKarty.size());
             AkcneKarty temp = balikAkcneKarty.get(i);
@@ -174,12 +173,12 @@ public class StreleneKacky {
         }
     }
 
-    private void zamiesajHraciePole() {
-        for (int i = 0; i < hraciePole.size(); i++) {
-            int nahodnaPremenna = (int)(Math.random() * hraciePole.size());
-            HraciePole temp = hraciePole.get(i);
-            hraciePole.set(i, hraciePole.get(nahodnaPremenna));
-            hraciePole.set(nahodnaPremenna, temp);
+    private void zamiesajKarty(ArrayList<HraciePole> balikHraciePole) {
+        for (int i = 0; i < balikHraciePole.size(); i++) {
+            int nahodnaPremenna = (int)(Math.random() * balikHraciePole.size());
+            HraciePole temp = balikHraciePole.get(i);
+            balikHraciePole.set(i, balikHraciePole.get(nahodnaPremenna));
+            balikHraciePole.set(nahodnaPremenna, temp);
         }
     }
 
@@ -193,7 +192,7 @@ public class StreleneKacky {
 
     private void vypisPole() {
         System.out.println("toto je balik kariet pola: ");
-        for (HraciePole hraciePole : hraciePole) {
+        for (HraciePole hraciePole : balikHraciePole) {
             System.out.println("• " + hraciePole.getMeno());
         }
         System.out.println("------------------------");
