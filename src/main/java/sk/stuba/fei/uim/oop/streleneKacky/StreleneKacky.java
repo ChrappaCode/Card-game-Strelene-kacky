@@ -5,6 +5,8 @@ import sk.stuba.fei.uim.oop.akcneKarty.pohyb.*;
 import sk.stuba.fei.uim.oop.akcneKarty.zamierenieStrelba.*;
 import sk.stuba.fei.uim.oop.hrac.Hrac;
 import sk.stuba.fei.uim.oop.hraciePole.HraciePole;
+import sk.stuba.fei.uim.oop.hraciePole.Kacka;
+import sk.stuba.fei.uim.oop.hraciePole.Voda;
 import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
 import java.util.ArrayList;
@@ -18,7 +20,6 @@ public class StreleneKacky {
     private int ktoJeNaTahu = 0;
     private ArrayList<AkcneKarty> balikAkcneKarty;
     private ArrayList<HraciePole> hraciePole;
-
 
     public StreleneKacky() {
 
@@ -46,12 +47,24 @@ public class StreleneKacky {
     private void startHry() {
 
         System.out.println("Hra sa začala");
-        System.out.println("toto je balik akcnych kariet: ");
         novyBalik();
         zamiesajKarty();
+
+        novePole();
+
+        for (Hrac hrac : hraci) {
+            hrac.rozdajKacky(hrac, hraciePole);
+        }
+
+        vypisPole();
+
+        System.out.println(this.hraci[2].getMojeKacky().get(2).getMeno());
+        System.out.println();
+
         vypisBalicek();
 
-        Hrac hracNaTahu = this.hraci[ktoJeNaTahu];
+        /*Hrac hracNaTahu = this.hraci[ktoJeNaTahu];
+
 
         hracNaTahu.hracTahaKartu(balikAkcneKarty);
         hracNaTahu.hracTahaKartu(balikAkcneKarty);
@@ -75,7 +88,7 @@ public class StreleneKacky {
         System.out.println(ktoJeNaTahu);
 
         System.out.println("Hra sa skončila");
-        vitazHry();  //funguje to len nechcem ten vypis teraz
+        vitazHry();  //funguje to len nechcem ten vypis teraz*/
         System.out.println("Jakub Chrappa ais: 111286");
     }
 
@@ -106,6 +119,10 @@ public class StreleneKacky {
     private void novePole() {
 
         this.hraciePole = new ArrayList<>();
+
+        for(int i = 5; i > 0; i--){
+            hraciePole.add(new Voda());
+        }
 
     }
 
@@ -154,13 +171,19 @@ public class StreleneKacky {
     }
 
     private void vypisBalicek() {
+        System.out.println("toto je balik akcnych kariet: ");
         for (AkcneKarty akcneKarty : balikAkcneKarty) {
             System.out.println("• " + akcneKarty.getMeno());
         }
         System.out.println("------------------------");
     }
 
-    public ArrayList<AkcneKarty> getBalikAkcneKarty() {
-        return balikAkcneKarty;
+    private void vypisPole() {
+        System.out.println("toto je balik kariet pola: ");
+        for (HraciePole hraciePole : hraciePole) {
+            System.out.println("• " + hraciePole.getMeno());
+        }
+        System.out.println("------------------------");
     }
+
 }
