@@ -48,15 +48,19 @@ public class StreleneKacky {
 
         System.out.println("Hra sa začala");
         novyBalik();
-        zamiesajKarty();
+        zamiesajAkcneKarty();
 
         novePole();
 
         for (Hrac hrac : hraci) {
             hrac.rozdajKacky(hrac, hraciePole);
         }
+        zamiesajHraciePole();
+
 
         vypisPole();
+
+        System.out.println("hraje " + pocetHracov + " hracov " + "preto máme " + (hraciePole.size() - 5) + " utiek");
 
         System.out.println(this.hraci[2].getMojeKacky().get(2).getMeno());
         System.out.println();
@@ -161,12 +165,21 @@ public class StreleneKacky {
         }
     }
 
-    private void zamiesajKarty() {
+    private void zamiesajAkcneKarty() {
         for (int i = 0; i < balikAkcneKarty.size(); i++) {
             int nahodnaPremenna = (int)(Math.random() * balikAkcneKarty.size());
             AkcneKarty temp = balikAkcneKarty.get(i);
             balikAkcneKarty.set(i, balikAkcneKarty.get(nahodnaPremenna));
             balikAkcneKarty.set(nahodnaPremenna, temp);
+        }
+    }
+
+    private void zamiesajHraciePole() {
+        for (int i = 0; i < hraciePole.size(); i++) {
+            int nahodnaPremenna = (int)(Math.random() * hraciePole.size());
+            HraciePole temp = hraciePole.get(i);
+            hraciePole.set(i, hraciePole.get(nahodnaPremenna));
+            hraciePole.set(nahodnaPremenna, temp);
         }
     }
 
