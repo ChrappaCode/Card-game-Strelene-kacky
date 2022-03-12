@@ -41,7 +41,6 @@ public class StreleneKacky {
         System.out.println("Dnes hrá : ");
         getHraci();
 
-
         startHry();
     }
 
@@ -50,19 +49,12 @@ public class StreleneKacky {
         System.out.println("Hra sa začala");
 
         novyBalik();
+        novePole();
         zamiesajKarty();
+        zamiesajKarty(balikHraciePole);
         inicializaciaZamerania();
 
-        novePole();
-
-        for (Hrac hrac : hraci) {
-            hrac.rozdajKacky(hrac, balikHraciePole);
-        }
-        zamiesajKarty(balikHraciePole);
-
         vypisBalikPole();
-
-
         vypisPole();
 
         balikHraciePole.add(balikHraciePole.get(0));
@@ -84,7 +76,8 @@ public class StreleneKacky {
 
         System.out.println("Tieto karty má " + hracNaTahu.getMeno() +" "+ hracNaTahu.getPoradoveCislo());
         hracNaTahu.coMaHracNaRuke();
-        hracNaTahu.hracZahralKartu(hracNaTahu,balikAkcneKarty);
+        hracNaTahu.hracZahralKartu(balikAkcneKarty);
+        hracNaTahu.coMaHracNaRuke();
 
         //kod here
 
@@ -101,23 +94,22 @@ public class StreleneKacky {
         this.balikAkcneKarty = new ArrayList<>();
 
         for(int i = 10; i > 0; i--){
-            balikAkcneKarty.add(new AkcnaKartaZamierit());
+            balikAkcneKarty.add(new AkcnaKartaZamierit(zamerane));
         }
         for(int i = 12; i > 0; i--){
-            balikAkcneKarty.add(new AkcnaKartaVystrelit());
+            balikAkcneKarty.add(new AkcnaKartaVystrelit(zamerane));
         }
         for(int i = 2; i > 0; i--){
-            balikAkcneKarty.add(new AkcnaKartaDivokyBill());
+            balikAkcneKarty.add(new AkcnaKartaDivokyBill(zamerane));
         }
         for(int i = 2; i > 0; i--){
-            balikAkcneKarty.add(new AkcnaKartaRosambo());
+            balikAkcneKarty.add(new AkcnaKartaRosambo(zamerane));
         }
         for(int i = 6; i > 0; i--){
-            balikAkcneKarty.add(new AkcnaKartaKacaciPochod());
+            balikAkcneKarty.add(new AkcnaKartaKacaciPochod(zamerane));
         }
-        balikAkcneKarty.add(new AkcnaKartaTurbokacka());
-        balikAkcneKarty.add(new AkcnaKartaKacaciTanec());
-
+        balikAkcneKarty.add(new AkcnaKartaTurbokacka(zamerane));
+        balikAkcneKarty.add(new AkcnaKartaKacaciTanec(zamerane));
     }
 
     public void inicializaciaZamerania() {
@@ -131,6 +123,10 @@ public class StreleneKacky {
 
         for(int i = 5; i > 0; i--){
             balikHraciePole.add(new Voda());
+        }
+
+        for (Hrac hrac : hraci) {
+            hrac.rozdajKacky(hrac, balikHraciePole);
         }
 
     }
@@ -147,7 +143,6 @@ public class StreleneKacky {
             }
         }
     }
-
 
     private void prepniHraca() {
         this.ktoJeNaTahu ++;
@@ -188,7 +183,7 @@ public class StreleneKacky {
         }
     }
 
-    private void vypisBalicek() {
+    private void vypisBalicekAkcnychKariet() {
         System.out.println("toto je balik akcnych kariet: ");
         for (AkcneKarty akcneKarty : balikAkcneKarty) {
             System.out.println("• " + akcneKarty.getMeno());

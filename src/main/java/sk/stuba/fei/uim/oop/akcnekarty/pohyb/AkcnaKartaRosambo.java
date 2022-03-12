@@ -7,8 +7,8 @@ public class AkcnaKartaRosambo extends AkcneKarty {
 
     private static final String MENO = "Rosambo";
 
-    public AkcnaKartaRosambo(){
-        super(MENO);
+    public AkcnaKartaRosambo(boolean[] zamerane){
+        super(MENO,zamerane);
     }
 
     @Override

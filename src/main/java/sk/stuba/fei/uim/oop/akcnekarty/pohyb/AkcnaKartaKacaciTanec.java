@@ -7,8 +7,8 @@ public class AkcnaKartaKacaciTanec extends AkcneKarty {
 
     private static final String MENO = "Kacaci Tanec";
 
-    public AkcnaKartaKacaciTanec(){
-        super(MENO);
+    public AkcnaKartaKacaciTanec(boolean[] zamerane){
+        super(MENO,zamerane);
     }
 
     @Override

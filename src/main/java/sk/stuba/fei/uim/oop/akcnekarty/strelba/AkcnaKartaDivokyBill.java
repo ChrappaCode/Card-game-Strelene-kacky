@@ -8,8 +8,8 @@ public class AkcnaKartaDivokyBill extends AkcneKarty {
 
     private static final String MENO = "Divoky Bill";
 
-    public AkcnaKartaDivokyBill(){
-        super(MENO);
+    public AkcnaKartaDivokyBill(boolean[] zamerane){
+        super(MENO , zamerane);
     }
 
 

@@ -44,9 +44,9 @@ public class Hrac {
         balikAkcneKarty.remove(0);
     }
 
-    public void hracZahralKartu(Hrac hrac, ArrayList<AkcneKarty> balikAkcneKarty) {
+    public void hracZahralKartu(ArrayList<AkcneKarty> balikAkcneKarty) {
         int cisloKarty = ZKlavesnice.readInt("ktorú kartu chceš zahrať (1 , 2 , 3)");
-        this.ruka.get(cisloKarty - 1).pouzil(hrac);
+        this.ruka.get(cisloKarty - 1).pouzil(this);
         balikAkcneKarty.add(this.ruka.get(cisloKarty - 1));
         this.ruka.remove(cisloKarty - 1);
         hracTahaKartu(balikAkcneKarty);

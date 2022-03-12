@@ -7,8 +7,8 @@ public class AkcnaKartaTurbokacka extends AkcneKarty {
 
     private static final String MENO = "Turbokacka";
 
-    public AkcnaKartaTurbokacka(){
-        super(MENO);
+    public AkcnaKartaTurbokacka(boolean[] zamerane){
+        super(MENO,zamerane);
     }
 
     @Override

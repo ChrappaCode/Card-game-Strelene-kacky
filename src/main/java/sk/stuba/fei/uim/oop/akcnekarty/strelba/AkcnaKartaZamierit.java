@@ -8,14 +8,15 @@ public class AkcnaKartaZamierit extends AkcneKarty {
 
     private static final String MENO = "Zamieriť";
 
-    public AkcnaKartaZamierit(){
-        super(MENO);
+    public AkcnaKartaZamierit(boolean[] zamerane){
+        super(MENO , zamerane);
     }
 
     @Override
     public void pouzil(Hrac hrac) {
 
         int a = ZKlavesnice.readInt("Ktoré políčko chcete zamieriť ?");
+        zamerane[a] = true;
 
     }
 }
