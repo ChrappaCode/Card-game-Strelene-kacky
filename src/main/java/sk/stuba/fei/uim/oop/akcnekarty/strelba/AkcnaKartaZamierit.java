@@ -16,7 +16,7 @@ public class AkcnaKartaZamierit extends AkcneKarty {
     public void pouzil(Hrac hrac) {
 
         int a = ZKlavesnice.readInt("Ktoré políčko chcete zamieriť ?");
-        zamerane[a] = true;
+        zamerane[a-1] = true;
 
     }
 }

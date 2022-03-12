@@ -48,11 +48,11 @@ public class StreleneKacky {
 
         System.out.println("Hra sa začala");
 
+        inicializaciaZamerania();
         novyBalik();
         novePole();
         zamiesajKarty();
         zamiesajKarty(balikHraciePole);
-        inicializaciaZamerania();
 
         vypisBalikPole();
         vypisPole();
@@ -78,6 +78,14 @@ public class StreleneKacky {
         hracNaTahu.coMaHracNaRuke();
         hracNaTahu.hracZahralKartu(balikAkcneKarty);
         hracNaTahu.coMaHracNaRuke();
+
+        vypisPole();
+
+
+        balikHraciePole.add(balikHraciePole.get(0));
+        balikHraciePole.remove(0);
+
+        vypisPole();
 
         //kod here
 
