@@ -1,6 +1,6 @@
 package sk.stuba.fei.uim.oop;
 
-import sk.stuba.fei.uim.oop.streleneKacky.StreleneKacky;
+import sk.stuba.fei.uim.oop.hra.StreleneKacky;
 
 
 public class Assignment1 {

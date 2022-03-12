@@ -1,6 +1,6 @@
-package sk.stuba.fei.uim.oop.akcneKarty.pohyb;
+package sk.stuba.fei.uim.oop.akcnekarty.pohyb;
 
-import sk.stuba.fei.uim.oop.akcneKarty.AkcneKarty;
+import sk.stuba.fei.uim.oop.akcnekarty.AkcneKarty;
 import sk.stuba.fei.uim.oop.hrac.Hrac;
 
 public class AkcnaKartaTurbokacka extends AkcneKarty {

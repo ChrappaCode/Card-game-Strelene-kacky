@@ -1,14 +1,15 @@
-package sk.stuba.fei.uim.oop.streleneKacky;
+package sk.stuba.fei.uim.oop.hra;
 
-import sk.stuba.fei.uim.oop.akcneKarty.AkcneKarty;
-import sk.stuba.fei.uim.oop.akcneKarty.pohyb.*;
-import sk.stuba.fei.uim.oop.akcneKarty.zamierenieStrelba.*;
+import sk.stuba.fei.uim.oop.akcnekarty.AkcneKarty;
+import sk.stuba.fei.uim.oop.akcnekarty.pohyb.*;
+import sk.stuba.fei.uim.oop.akcnekarty.strelba.*;
 import sk.stuba.fei.uim.oop.hrac.Hrac;
-import sk.stuba.fei.uim.oop.hraciePole.HraciePole;
-import sk.stuba.fei.uim.oop.hraciePole.Voda;
+import sk.stuba.fei.uim.oop.hraciepole.HraciePole;
+import sk.stuba.fei.uim.oop.hraciepole.Voda;
 import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class StreleneKacky {
@@ -19,6 +20,7 @@ public class StreleneKacky {
     private int ktoJeNaTahu = 0;
     private ArrayList<AkcneKarty> balikAkcneKarty;
     private ArrayList<HraciePole> balikHraciePole;
+    private boolean[] zamerane;
 
     public StreleneKacky() {
 
@@ -46,8 +48,10 @@ public class StreleneKacky {
     private void startHry() {
 
         System.out.println("Hra sa začala");
+
         novyBalik();
         zamiesajKarty();
+        inicializaciaZamerania();
 
         novePole();
 
@@ -56,17 +60,22 @@ public class StreleneKacky {
         }
         zamiesajKarty(balikHraciePole);
 
+        vypisBalikPole();
+
+
+        vypisPole();
+
+        balikHraciePole.add(balikHraciePole.get(0));
+        balikHraciePole.remove(0);
 
         vypisPole();
 
         System.out.println("hraje " + pocetHracov + " hracov " + "preto máme " + (balikHraciePole.size() - 5) + " utiek");
 
-        System.out.println(this.hraci[2].getMojeKacky().get(2).getMeno());
         System.out.println();
 
-        vypisBalicek();
 
-        /*Hrac hracNaTahu = this.hraci[ktoJeNaTahu];
+        Hrac hracNaTahu = this.hraci[ktoJeNaTahu];
 
 
         hracNaTahu.hracTahaKartu(balikAkcneKarty);
@@ -75,22 +84,14 @@ public class StreleneKacky {
 
         System.out.println("Tieto karty má " + hracNaTahu.getMeno() +" "+ hracNaTahu.getPoradoveCislo());
         hracNaTahu.coMaHracNaRuke();
-
-        vypisBalicek();
-
-        hracNaTahu.hracZahralKartu(hracNaTahu , balikAkcneKarty);
-        hracNaTahu.coMaHracNaRuke();
-
-        vypisBalicek();
-
-        getHraci();
+        hracNaTahu.hracZahralKartu(hracNaTahu,balikAkcneKarty);
 
         //kod here
 
         prepniHraca();
         System.out.println(ktoJeNaTahu);
 
-        vitazHry();  //funguje to len nechcem ten vypis teraz*/
+        vitazHry();  //funguje to len nechcem ten vypis teraz
         System.out.println("Hra sa skončila");
         System.out.println("Jakub Chrappa ais: 111286");
     }
@@ -117,6 +118,11 @@ public class StreleneKacky {
         balikAkcneKarty.add(new AkcnaKartaTurbokacka());
         balikAkcneKarty.add(new AkcnaKartaKacaciTanec());
 
+    }
+
+    public void inicializaciaZamerania() {
+        this.zamerane = new boolean[6];
+        Arrays.fill(zamerane, false);
     }
 
     private void novePole() {
@@ -152,7 +158,7 @@ public class StreleneKacky {
 
     private void getHraci() {
         for (int i = 0; i < pocetHracov; i++) {
-            System.out.println(this.hraci[i].getMeno() +" "+ this.hraci[i].getPoradoveCislo() + " -> počet životov: " + this.hraci[i].getPocetZivotov());
+            System.out.println(this.hraci[i].getMeno() +" "+ this.hraci[i].getPoradoveCislo() + " -> počet životov: " + this.hraci[i].getPocetKaciek());
         }
     }
 
@@ -190,7 +196,7 @@ public class StreleneKacky {
         System.out.println("------------------------");
     }
 
-    private void vypisPole() {
+    private void vypisBalikPole() {
         System.out.println("toto je balik kariet pola: ");
         for (HraciePole hraciePole : balikHraciePole) {
             System.out.println("• " + hraciePole.getMeno());
@@ -198,4 +204,16 @@ public class StreleneKacky {
         System.out.println("------------------------");
     }
 
+    private void vypisPole() {
+        System.out.println("toto je herne pole: ");
+        for (int i = 0; i < 6 ; i++) {
+            System.out.println((i+1) +" • " + balikHraciePole.get(i).getMeno() + " -> " + zamerane[i]);
+
+        }
+        System.out.println("------------------------");
+    }
+
+    public boolean[] getZamerane() {
+        return zamerane;
+    }
 }

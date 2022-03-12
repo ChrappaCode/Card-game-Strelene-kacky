@@ -1,4 +1,4 @@
-package sk.stuba.fei.uim.oop.hraciePole;
+package sk.stuba.fei.uim.oop.hraciepole;
 
 public abstract class HraciePole {
 

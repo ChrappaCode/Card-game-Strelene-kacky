@@ -1,4 +1,4 @@
-package sk.stuba.fei.uim.oop.akcneKarty;
+package sk.stuba.fei.uim.oop.akcnekarty;
 
 import sk.stuba.fei.uim.oop.hrac.Hrac;
 

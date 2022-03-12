@@ -1,4 +1,4 @@
-package sk.stuba.fei.uim.oop.hraciePole;
+package sk.stuba.fei.uim.oop.hraciepole;
 
 public class Voda extends HraciePole{
 
@@ -7,4 +7,6 @@ public class Voda extends HraciePole{
     public Voda() {
         super(MENO);
     }
+
+
 }

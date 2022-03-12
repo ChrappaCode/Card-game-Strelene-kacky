@@ -1,8 +1,8 @@
 package sk.stuba.fei.uim.oop.hrac;
 
-import sk.stuba.fei.uim.oop.akcneKarty.AkcneKarty;
-import sk.stuba.fei.uim.oop.hraciePole.HraciePole;
-import sk.stuba.fei.uim.oop.hraciePole.*;
+import sk.stuba.fei.uim.oop.akcnekarty.AkcneKarty;
+import sk.stuba.fei.uim.oop.hraciepole.HraciePole;
+import sk.stuba.fei.uim.oop.hraciepole.*;
 import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ public class Hrac {
 
     private final String meno;
     private final int poradoveCislo;
-    private int pocetZivotov;
+    private int pocetKaciek;
     private ArrayList<HraciePole> mojeKacky;
     private boolean hracZije;
     private final ArrayList<AkcneKarty> ruka = new ArrayList<>();
@@ -19,21 +19,21 @@ public class Hrac {
     public Hrac(int poradoveCislo) {
         this.meno = "Hráč ";
         this.poradoveCislo = poradoveCislo;
-        this.pocetZivotov = 5;
+        this.pocetKaciek = 5;
         this.hracZije = true;
     }
 
     public Hrac(String meno , int poradoveCislo) {
         this.meno = meno;
         this.poradoveCislo = poradoveCislo;
-        this.pocetZivotov = 5;
+        this.pocetKaciek = 5;
         this.hracZije = true;
     }
 
 
     public boolean hracDostalZasah() {
-        this.pocetZivotov --;
-        if(pocetZivotov == 0){
+        this.pocetKaciek--;
+        if(pocetKaciek == 0){
             this.hracZije = false;
         }
         return hracZije;
@@ -82,8 +82,8 @@ public class Hrac {
         return poradoveCislo;
     }
 
-    public int getPocetZivotov() {
-        return pocetZivotov;
+    public int getPocetKaciek() {
+        return pocetKaciek;
     }
 
     public ArrayList<HraciePole> getMojeKacky() {

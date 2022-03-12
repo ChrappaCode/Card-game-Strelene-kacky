@@ -1,7 +1,8 @@
-package sk.stuba.fei.uim.oop.akcneKarty.zamierenieStrelba;
+package sk.stuba.fei.uim.oop.akcnekarty.strelba;
 
-import sk.stuba.fei.uim.oop.akcneKarty.AkcneKarty;
+import sk.stuba.fei.uim.oop.akcnekarty.AkcneKarty;
 import sk.stuba.fei.uim.oop.hrac.Hrac;
+import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
 public class AkcnaKartaZamierit extends AkcneKarty {
 
@@ -13,6 +14,8 @@ public class AkcnaKartaZamierit extends AkcneKarty {
 
     @Override
     public void pouzil(Hrac hrac) {
+
+        int a = ZKlavesnice.readInt("Ktoré políčko chcete zamieriť ?");
 
     }
 }
