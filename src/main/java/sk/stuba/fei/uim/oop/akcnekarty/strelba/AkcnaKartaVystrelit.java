@@ -31,8 +31,8 @@ public class AkcnaKartaVystrelit extends AkcneKarty {
         System.out.println(pole.get(b-1).getMeno());
 
         if(pole.get(b-1) instanceof Kacka){
+            hraci[pole.get(b-1).getCisloVlastnika() - 1].hracDostalZasah();
             pole.remove(b-1);
-            hrac.hracDostalZasah();
         }
 
         zamerane[b-1] = false;
