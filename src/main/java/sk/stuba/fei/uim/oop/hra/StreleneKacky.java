@@ -5,6 +5,7 @@ import sk.stuba.fei.uim.oop.akcnekarty.pohyb.*;
 import sk.stuba.fei.uim.oop.akcnekarty.strelba.*;
 import sk.stuba.fei.uim.oop.hrac.Hrac;
 import sk.stuba.fei.uim.oop.hraciepole.HraciePole;
+import sk.stuba.fei.uim.oop.hraciepole.Kacka;
 import sk.stuba.fei.uim.oop.hraciepole.Voda;
 import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
@@ -49,10 +50,10 @@ public class StreleneKacky {
         System.out.println("Hra sa začala");
 
         inicializaciaZamerania();
-        novyBalik();
         novePole();
-        zamiesajKarty();
         zamiesajKarty(balikHraciePole);
+        novyBalik();
+        zamiesajKarty();
 
         vypisBalikPole();
         vypisPole();
@@ -75,6 +76,23 @@ public class StreleneKacky {
         hracNaTahu.hracTahaKartu(balikAkcneKarty);
 
         System.out.println("Tieto karty má " + hracNaTahu.getMeno() +" "+ hracNaTahu.getPoradoveCislo());
+
+        hracNaTahu.daSaZahrat(zamerane);
+        hracNaTahu.coMaHracNaRuke();
+        hracNaTahu.hracZahralKartu(balikAkcneKarty);
+        hracNaTahu.coMaHracNaRuke();
+
+        vypisPole();
+
+        hracNaTahu.daSaZahrat(zamerane);
+        hracNaTahu.coMaHracNaRuke();
+        hracNaTahu.hracZahralKartu(balikAkcneKarty);
+        hracNaTahu.coMaHracNaRuke();
+
+        vypisPole();
+
+
+        hracNaTahu.daSaZahrat(zamerane);
         hracNaTahu.coMaHracNaRuke();
         hracNaTahu.hracZahralKartu(balikAkcneKarty);
         hracNaTahu.coMaHracNaRuke();
@@ -87,8 +105,8 @@ public class StreleneKacky {
 
         vypisPole();
 
-        //kod here
 
+        getHraci();
         prepniHraca();
         System.out.println(ktoJeNaTahu);
 
@@ -102,22 +120,22 @@ public class StreleneKacky {
         this.balikAkcneKarty = new ArrayList<>();
 
         for(int i = 10; i > 0; i--){
-            balikAkcneKarty.add(new AkcnaKartaZamierit(zamerane));
+            balikAkcneKarty.add(new AkcnaKartaZamierit(zamerane , balikHraciePole , hraci));
         }
         for(int i = 12; i > 0; i--){
-            balikAkcneKarty.add(new AkcnaKartaVystrelit(zamerane));
+            balikAkcneKarty.add(new AkcnaKartaVystrelit(zamerane , balikHraciePole , hraci));
         }
         for(int i = 2; i > 0; i--){
-            balikAkcneKarty.add(new AkcnaKartaDivokyBill(zamerane));
+            balikAkcneKarty.add(new AkcnaKartaDivokyBill(zamerane , balikHraciePole , hraci));
         }
         for(int i = 2; i > 0; i--){
-            balikAkcneKarty.add(new AkcnaKartaRosambo(zamerane));
+            balikAkcneKarty.add(new AkcnaKartaRosambo(zamerane , balikHraciePole , hraci));
         }
         for(int i = 6; i > 0; i--){
-            balikAkcneKarty.add(new AkcnaKartaKacaciPochod(zamerane));
+            balikAkcneKarty.add(new AkcnaKartaKacaciPochod(zamerane , balikHraciePole , hraci));
         }
-        balikAkcneKarty.add(new AkcnaKartaTurbokacka(zamerane));
-        balikAkcneKarty.add(new AkcnaKartaKacaciTanec(zamerane));
+        balikAkcneKarty.add(new AkcnaKartaTurbokacka(zamerane , balikHraciePole , hraci));
+        balikAkcneKarty.add(new AkcnaKartaKacaciTanec(zamerane , balikHraciePole , hraci));
     }
 
     public void inicializaciaZamerania() {
@@ -210,7 +228,11 @@ public class StreleneKacky {
     private void vypisPole() {
         System.out.println("toto je herne pole: ");
         for (int i = 0; i < 6 ; i++) {
-            System.out.println((i+1) +" • " + balikHraciePole.get(i).getMeno() + " -> " + zamerane[i]);
+            System.out.print((i+1) +" • " + balikHraciePole.get(i).getMeno());
+            if(balikHraciePole.get(i) instanceof Kacka){
+                System.out.print(" " +  balikHraciePole.get(i).getCisloVlastnika());
+            }
+            System.out.println(" -> " + zamerane[i]);
 
         }
         System.out.println("------------------------");

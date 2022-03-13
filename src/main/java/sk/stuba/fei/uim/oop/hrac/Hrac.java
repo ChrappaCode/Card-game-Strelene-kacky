@@ -63,6 +63,37 @@ public class Hrac {
 
     }
 
+    public void daSaZahrat(boolean[] zamerane){
+        int a = 1;
+        int c = 1;
+
+        for(boolean b : zamerane){
+            if(!b) {
+                c=2;break;
+            }
+            else a = 0;
+        }
+        if(a == 0 && c != 2){
+            System.out.println("Všetko je zamerané nemožeš zahrať kartu zamerať");
+        }
+
+        c = 1;
+
+        for(boolean b : zamerane){
+            if(!b) {
+                c=2;
+            }
+            else {
+                c = 1;
+                break;
+            }
+        }
+        if(c == 2){
+            System.out.println("Nič nie je zamerané nemožeš zahrať kartu vystreliť");
+        }
+
+    }
+
 
     public void coMaHracNaRuke() {
         for (int i = 0; i < ruka.size() ; i++) {
