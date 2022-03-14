@@ -28,9 +28,7 @@ public class AkcnaKartaVystrelit extends AkcneKarty {
             break;
         }
 
-        System.out.println(pole.get(b-1).getMeno());
-
-        if(pole.get(b-1) instanceof Kacka){
+        if(pole.get(b-1) instanceof Kacka && zamerane[b-1]){
             hraci[pole.get(b-1).getCisloVlastnika() - 1].hracDostalZasah();
             pole.remove(b-1);
         }

@@ -45,8 +45,15 @@ public class Hrac {
     }
 
     public void hracZahralKartu(ArrayList<AkcneKarty> balikAkcneKarty) {
-        int cisloKarty = ZKlavesnice.readInt("ktorú kartu chceš zahrať (1 , 2 , 3)");
+        int cisloKarty = ZKlavesnice.readInt("Ktorú kartu chceš zahrať (1 , 2 , 3)");
         this.ruka.get(cisloKarty - 1).pouzil(this);
+        balikAkcneKarty.add(this.ruka.get(cisloKarty - 1));
+        this.ruka.remove(cisloKarty - 1);
+        hracTahaKartu(balikAkcneKarty);
+    }
+
+    public void zahodKartu(ArrayList<AkcneKarty> balikAkcneKarty){
+        int cisloKarty = ZKlavesnice.readInt("Ktorú kartu chceš zahodiť (1 , 2 , 3)");
         balikAkcneKarty.add(this.ruka.get(cisloKarty - 1));
         this.ruka.remove(cisloKarty - 1);
         hracTahaKartu(balikAkcneKarty);
@@ -93,7 +100,6 @@ public class Hrac {
         }
 
     }
-
 
     public void coMaHracNaRuke() {
         for (int i = 0; i < ruka.size() ; i++) {

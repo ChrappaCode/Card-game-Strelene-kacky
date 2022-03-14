@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 
+
 public class StreleneKacky {
 
     public static final int MAX_POCET_HRACOV = 6;
@@ -55,6 +56,8 @@ public class StreleneKacky {
         novyBalik();
         zamiesajKarty();
 
+
+
         vypisBalikPole();
         vypisPole();
 
@@ -96,12 +99,6 @@ public class StreleneKacky {
         hracNaTahu.coMaHracNaRuke();
         hracNaTahu.hracZahralKartu(balikAkcneKarty);
         hracNaTahu.coMaHracNaRuke();
-
-        vypisPole();
-
-
-        balikHraciePole.add(balikHraciePole.get(0));
-        balikHraciePole.remove(0);
 
         vypisPole();
 
