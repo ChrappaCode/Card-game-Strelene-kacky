@@ -60,10 +60,14 @@ public class Hrac {
 
         else{
 
-            this.cisloKarty = ZKlavesnice.readInt("Ktorú kartu chcete zahrať " + pomocneCislo);
-            while (cisloKarty < 1 || cisloKarty > 3) {
-                this.cisloKarty = ZKlavesnice.readInt("Ktorú kartu chcete zahrať " + pomocneCislo);
-            }
+            do {
+                while (true){
+                    this.cisloKarty = ZKlavesnice.readInt("Ktorú kartu chcete zahrať " + pomocneCislo);
+                    if(pomocneCislo.get(pomocneCislo.size()-1) == cisloKarty){
+                        break;
+                    }
+                }
+            }while (cisloKarty < 1 || cisloKarty > 3);
 
             this.ruka.get(cisloKarty - 1).pouzil(this);
             balikAkcneKarty.add(this.ruka.get(cisloKarty - 1));
@@ -91,7 +95,7 @@ public class Hrac {
     }
 
     public void coMaHracNaRuke(boolean[] zamerane) {
-        this.pomocneCislo = new ArrayList<Integer>();
+        this.pomocneCislo = new ArrayList<>(3);
         for (int i = 0; i < ruka.size() ; i++) {
             if(ruka.get(i) instanceof AkcnaKartaVystrelit && !daSaZahratVystrelit(zamerane)){
                 System.out.println("Nič nie je zamerané nemožeš zahrať kartu vystreliť");
