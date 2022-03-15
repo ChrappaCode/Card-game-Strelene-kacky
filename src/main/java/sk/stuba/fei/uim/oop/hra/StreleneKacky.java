@@ -80,14 +80,16 @@ public class StreleneKacky {
 
         System.out.println("Tieto karty má " + hracNaTahu.getMeno() +" "+ hracNaTahu.getPoradoveCislo());
 
-        hracNaTahu.daSaZahrat(zamerane);
+        hracNaTahu.daSaZahratZamerat(zamerane);
+        hracNaTahu.daSaZahratVystrelit(zamerane);
         hracNaTahu.coMaHracNaRuke();
         hracNaTahu.hracZahralKartu(balikAkcneKarty);
         hracNaTahu.coMaHracNaRuke();
 
         vypisPole();
 
-        hracNaTahu.daSaZahrat(zamerane);
+        hracNaTahu.daSaZahratZamerat(zamerane);
+        hracNaTahu.daSaZahratVystrelit(zamerane);
         hracNaTahu.coMaHracNaRuke();
         hracNaTahu.hracZahralKartu(balikAkcneKarty);
         hracNaTahu.coMaHracNaRuke();
@@ -95,7 +97,8 @@ public class StreleneKacky {
         vypisPole();
 
 
-        hracNaTahu.daSaZahrat(zamerane);
+        hracNaTahu.daSaZahratZamerat(zamerane);
+        hracNaTahu.daSaZahratVystrelit(zamerane);
         hracNaTahu.coMaHracNaRuke();
         hracNaTahu.hracZahralKartu(balikAkcneKarty);
         hracNaTahu.coMaHracNaRuke();

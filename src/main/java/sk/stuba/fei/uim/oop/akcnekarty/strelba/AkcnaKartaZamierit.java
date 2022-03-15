@@ -18,7 +18,7 @@ public class AkcnaKartaZamierit extends AkcneKarty {
     @Override
     public void pouzil(Hrac hrac) {
 
-        int b = ZKlavesnice.readInt("Ktoré políčko chcete zamieriť ?");
+        int b = ZKlavesnice.readInt("Ktoré políčko chcete zamerať ?");
         while (true){
             if(zamerane[b-1]){
                 System.out.println("Toto poličko je už zamerané");

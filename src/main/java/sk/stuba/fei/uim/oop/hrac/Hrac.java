@@ -70,7 +70,14 @@ public class Hrac {
 
     }
 
-    public void daSaZahrat(boolean[] zamerane){
+    public void coMaHracNaRuke() {
+        for (int i = 0; i < ruka.size() ; i++) {
+            System.out.println(String.format("karta %d • ", i+1) + ruka.get(i).getMeno());
+        }
+    }
+
+    public boolean daSaZahratZamerat(boolean[] zamerane){
+
         int a = 1;
         int c = 1;
 
@@ -82,9 +89,14 @@ public class Hrac {
         }
         if(a == 0 && c != 2){
             System.out.println("Všetko je zamerané nemožeš zahrať kartu zamerať");
+            return false;
         }
+        return true;
+    }
 
-        c = 1;
+    public boolean daSaZahratVystrelit(boolean[] zamerane){
+
+        int c = 1;
 
         for(boolean b : zamerane){
             if(!b) {
@@ -97,14 +109,9 @@ public class Hrac {
         }
         if(c == 2){
             System.out.println("Nič nie je zamerané nemožeš zahrať kartu vystreliť");
+            return false;
         }
-
-    }
-
-    public void coMaHracNaRuke() {
-        for (int i = 0; i < ruka.size() ; i++) {
-            System.out.println(String.format("karta %d • ", i+1) + ruka.get(i).getMeno());
-        }
+        return true;
     }
 
     public boolean getHracZije() {
