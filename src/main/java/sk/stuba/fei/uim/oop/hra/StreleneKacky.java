@@ -82,17 +82,17 @@ public class StreleneKacky {
 
 
         hracNaTahu.coMaHracNaRuke(zamerane);
-        hracNaTahu.hracZahralKartu(balikAkcneKarty);
+        hracNaTahu.hracZahralKartu(balikAkcneKarty,zamerane);
 
         vypisPole();
 
         hracNaTahu.coMaHracNaRuke(zamerane);
-        hracNaTahu.hracZahralKartu(balikAkcneKarty);
+        hracNaTahu.hracZahralKartu(balikAkcneKarty,zamerane);
 
         vypisPole();
 
         hracNaTahu.coMaHracNaRuke(zamerane);
-        hracNaTahu.hracZahralKartu(balikAkcneKarty);
+        hracNaTahu.hracZahralKartu(balikAkcneKarty,zamerane);
 
         vypisPole();
 

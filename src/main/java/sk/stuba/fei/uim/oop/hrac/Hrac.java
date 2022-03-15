@@ -15,6 +15,7 @@ public class Hrac {
     private final int poradoveCislo;
     private int pocetKaciek;
     private ArrayList<HraciePole> mojeKacky;
+    private ArrayList<Integer> pomocneCislo;
     private boolean hracZije;
     private int cisloKarty;
     private final ArrayList<AkcneKarty> ruka = new ArrayList<>();
@@ -47,12 +48,28 @@ public class Hrac {
         balikAkcneKarty.remove(0);
     }
 
-    public void hracZahralKartu(ArrayList<AkcneKarty> balikAkcneKarty) {
+    public void hracZahralKartu(ArrayList<AkcneKarty> balikAkcneKarty , boolean[] zamerane) {
 
-        this.ruka.get(cisloKarty - 1).pouzil(this);
-        balikAkcneKarty.add(this.ruka.get(cisloKarty - 1));
-        this.ruka.remove(cisloKarty - 1);
-        hracTahaKartu(balikAkcneKarty);
+        if(!daSaZahratZamerat(zamerane) && ruka.get(0) instanceof AkcnaKartaZamierit && ruka.get(1) instanceof AkcnaKartaZamierit && ruka.get(2) instanceof AkcnaKartaZamierit){
+            zahodKartu(balikAkcneKarty);
+        }
+
+        else if(!daSaZahratVystrelit(zamerane) && ruka.get(0) instanceof AkcnaKartaVystrelit && ruka.get(1) instanceof AkcnaKartaVystrelit && ruka.get(2) instanceof AkcnaKartaVystrelit){
+            zahodKartu(balikAkcneKarty);
+        }
+
+        else{
+
+            this.cisloKarty = ZKlavesnice.readInt("Ktorú kartu chcete zahrať " + pomocneCislo);
+            while (cisloKarty < 1 || cisloKarty > 3) {
+                this.cisloKarty = ZKlavesnice.readInt("Ktorú kartu chcete zahrať " + pomocneCislo);
+            }
+
+            this.ruka.get(cisloKarty - 1).pouzil(this);
+            balikAkcneKarty.add(this.ruka.get(cisloKarty - 1));
+            this.ruka.remove(cisloKarty - 1);
+            hracTahaKartu(balikAkcneKarty);
+        }
     }
 
     public void zahodKartu(ArrayList<AkcneKarty> balikAkcneKarty){
@@ -74,20 +91,20 @@ public class Hrac {
     }
 
     public void coMaHracNaRuke(boolean[] zamerane) {
-        ArrayList<Integer> pomocne = new ArrayList<Integer>();
+        this.pomocneCislo = new ArrayList<Integer>();
         for (int i = 0; i < ruka.size() ; i++) {
             if(ruka.get(i) instanceof AkcnaKartaVystrelit && !daSaZahratVystrelit(zamerane)){
+                System.out.println("Nič nie je zamerané nemožeš zahrať kartu vystreliť");
                 continue;
             }
             if(ruka.get(i) instanceof AkcnaKartaZamierit && !daSaZahratZamerat(zamerane)){
+                System.out.println("Všetko je zamerané nemožeš zahrať kartu zamerať");
                 continue;
             }
             System.out.println(String.format("karta %d • ", i+1) + ruka.get(i).getMeno());
-            pomocne.add(i+1);
+            pomocneCislo.add(i+1);
         }
-        do {
-            this.cisloKarty = ZKlavesnice.readInt("Ktorú kartu chcete zahrať " + pomocne);
-        }while (cisloKarty < 1 || cisloKarty > 3);
+
     }
 
     public boolean daSaZahratZamerat(boolean[] zamerane){
@@ -101,11 +118,7 @@ public class Hrac {
             }
             else a = 0;
         }
-        if(a == 0 && c != 2){
-            System.out.println("Všetko je zamerané nemožeš zahrať kartu zamerať");
-            return false;
-        }
-        return true;
+        return a != 0 || c == 2;
     }
 
     public boolean daSaZahratVystrelit(boolean[] zamerane){
@@ -121,11 +134,7 @@ public class Hrac {
                 break;
             }
         }
-        if(c == 2){
-            System.out.println("Nič nie je zamerané nemožeš zahrať kartu vystreliť");
-            return false;
-        }
-        return true;
+        return c != 2;
     }
 
     public boolean getHracZije() {
