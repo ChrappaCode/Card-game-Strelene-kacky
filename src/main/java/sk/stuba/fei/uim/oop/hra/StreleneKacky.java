@@ -9,6 +9,7 @@ import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 
 public class StreleneKacky {
@@ -49,9 +50,9 @@ public class StreleneKacky {
 
         inicializaciaZamerania();
         novePole();
-        zamiesajKarty(balikHraciePole);
+        Collections.shuffle(balikHraciePole);
         novyBalik();
-        zamiesajKarty();
+        Collections.shuffle(balikAkcneKarty);
 
         vypisPole();
 
@@ -61,11 +62,9 @@ public class StreleneKacky {
             hrac.hracTahaKartu(balikAkcneKarty);
         }
 
+        for (this.ktoJeNaTahu = 0;kolkoZijeHracov() > 1;this.prepniHraca()) {
+
         Hrac hracNaTahu = this.hraci[ktoJeNaTahu];
-
-        prepniHraca();
-
-        System.out.println();
 
         System.out.println("Tieto karty má " + hracNaTahu.getMeno() +" "+ hracNaTahu.getPoradoveCislo());
         hracNaTahu.coMaHracNaRuke(zamerane);
@@ -73,22 +72,10 @@ public class StreleneKacky {
 
         vypisPole();
 
-        hracNaTahu.coMaHracNaRuke(zamerane);
-        hracNaTahu.hracZahralKartu(balikAkcneKarty,zamerane);
-
-        vypisPole();
-
-        hracNaTahu.coMaHracNaRuke(zamerane);
-        hracNaTahu.hracZahralKartu(balikAkcneKarty,zamerane);
-
-        vypisPole();
-
         getHraci();
 
-        prepniHraca();
-        System.out.println();
-
-        vitazHry();  //funguje to len nechcem ten vypis teraz
+        }
+        vitazHry();
         System.out.println("Hra sa skončila");
         System.out.println("Jakub Chrappa ais: 111286");
     }
@@ -147,6 +134,15 @@ public class StreleneKacky {
             }
         }
     }
+    private int kolkoZijeHracov() {
+        int pocet = 0;
+        for (Hrac hrac : this.hraci) {
+            if (hrac.getHracZije()) {
+                pocet++;
+            }
+        }
+        return pocet;
+    }
 
     private void prepniHraca() {
         this.ktoJeNaTahu ++;
@@ -169,30 +165,12 @@ public class StreleneKacky {
         }
     }
 
-    private void zamiesajKarty() {
-        for (int i = 0; i < balikAkcneKarty.size(); i++) {
-            int nahodnaPremenna = (int)(Math.random() * balikAkcneKarty.size());
-            AkcneKarty temp = balikAkcneKarty.get(i);
-            balikAkcneKarty.set(i, balikAkcneKarty.get(nahodnaPremenna));
-            balikAkcneKarty.set(nahodnaPremenna, temp);
-        }
-    }
-
-    private void zamiesajKarty(ArrayList<HraciePole> balikHraciePole) {
-        for (int i = 0; i < balikHraciePole.size(); i++) {
-            int nahodnaPremenna = (int)(Math.random() * balikHraciePole.size());
-            HraciePole temp = balikHraciePole.get(i);
-            balikHraciePole.set(i, balikHraciePole.get(nahodnaPremenna));
-            balikHraciePole.set(nahodnaPremenna, temp);
-        }
-    }
-
-    private void vypisBalicekAkcnychKariet() {
+   /* private void vypisBalicekAkcnychKariet() {
         System.out.println("toto je balik akcnych kariet: ");
         for (AkcneKarty akcneKarty : balikAkcneKarty) {
             System.out.println("• " + akcneKarty.getMeno());
         }
-        System.out.println("------------------------");
+        System.out.println("------------------------------------------------");
     }
 
     private void vypisBalikPole() {
@@ -200,8 +178,8 @@ public class StreleneKacky {
         for (HraciePole hraciePole : balikHraciePole) {
             System.out.println("• " + hraciePole.getMeno() +" "+ hraciePole.getCisloVlastnika());
         }
-        System.out.println("------------------------");
-    }
+        System.out.println("------------------------------------------------");
+    }*/
 
     private void vypisPole() {
         System.out.println("toto je herne pole: ");
@@ -210,17 +188,17 @@ public class StreleneKacky {
             if(balikHraciePole.get(i) instanceof Kacka){
                 System.out.print(" " +  balikHraciePole.get(i).getCisloVlastnika());
             }
-            if(zamerane[i] && balikHraciePole.get(i) instanceof Kacka){
-                System.out.println(" -> toto políčko je zamerané");
+            if(balikHraciePole.get(i) instanceof Kacka){
+                System.out.print(" -> ");
             }
-            if(!zamerane[i] && balikHraciePole.get(i) instanceof Kacka){
-                System.out.println(" -> toto políčko nie je zamerané");
+            if(balikHraciePole.get(i) instanceof Voda){
+                System.out.print("     -> ");
             }
-            if(zamerane[i] && balikHraciePole.get(i) instanceof Voda){
-                System.out.println("     -> toto políčko je zamerané");
+            if(zamerane[i]){
+                System.out.println("toto políčko je zamerané");
             }
-            if(!zamerane[i] && balikHraciePole.get(i) instanceof Voda){
-                System.out.println("     -> toto políčko nie je zamerané");
+            if(!zamerane[i]){
+                System.out.println("toto políčko nie je zamerané");
             }
         }
         System.out.println("------------------------");

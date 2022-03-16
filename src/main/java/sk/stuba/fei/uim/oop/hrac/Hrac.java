@@ -39,8 +39,17 @@ public class Hrac {
         this.pocetKaciek--;
         if(pocetKaciek == 0){
             this.hracZije = false;
+
         }
         return hracZije;
+    }
+
+    public void hracZomrel(ArrayList<AkcneKarty> balikAkcneKarty){
+
+        for (int i = 0; i < this.ruka.size() ; i++) {
+            balikAkcneKarty.add(this.ruka.get(i));
+            this.ruka.remove(i);
+        }
     }
 
     public void hracTahaKartu(ArrayList<AkcneKarty> balikAkcneKarty) {
