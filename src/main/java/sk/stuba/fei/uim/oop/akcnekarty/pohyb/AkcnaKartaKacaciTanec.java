@@ -5,6 +5,7 @@ import sk.stuba.fei.uim.oop.hrac.Hrac;
 import sk.stuba.fei.uim.oop.hraciepole.HraciePole;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class AkcnaKartaKacaciTanec extends AkcneKarty {
 
@@ -16,6 +17,8 @@ public class AkcnaKartaKacaciTanec extends AkcneKarty {
 
     @Override
     public void pouzil(Hrac hrac) {
+
+        Collections.shuffle(pole);
 
     }
 }

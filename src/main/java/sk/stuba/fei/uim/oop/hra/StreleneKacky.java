@@ -4,14 +4,11 @@ import sk.stuba.fei.uim.oop.akcnekarty.AkcneKarty;
 import sk.stuba.fei.uim.oop.akcnekarty.pohyb.*;
 import sk.stuba.fei.uim.oop.akcnekarty.strelba.*;
 import sk.stuba.fei.uim.oop.hrac.Hrac;
-import sk.stuba.fei.uim.oop.hraciepole.HraciePole;
-import sk.stuba.fei.uim.oop.hraciepole.Kacka;
-import sk.stuba.fei.uim.oop.hraciepole.Voda;
+import sk.stuba.fei.uim.oop.hraciepole.*;
 import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
 
 
 public class StreleneKacky {

@@ -17,5 +17,9 @@ public class AkcnaKartaKacaciPochod extends AkcneKarty {
     @Override
     public void pouzil(Hrac hrac) {
 
+        pole.add(pole.get(0));
+        pole.remove(0);
+
+
     }
 }
