@@ -118,7 +118,6 @@ public class Hrac {
             System.out.println(String.format("karta %d • ", i+1) + ruka.get(i).getMeno());
             pomocneCislo.add(i+1);
         }
-
     }
 
     public boolean nedaSaZahratZamerat(boolean[] zamerane){

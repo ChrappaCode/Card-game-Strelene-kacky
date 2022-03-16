@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class AkcnaKartaRosambo extends AkcneKarty {
 
-    private static final String MENO = "Rosambo";
+    private static final String MENO = "Rošambo";
 
     public AkcnaKartaRosambo(boolean[] zamerane , ArrayList<HraciePole> pole , Hrac[] hraci){
         super(MENO,zamerane , pole , hraci);
@@ -17,5 +17,11 @@ public class AkcnaKartaRosambo extends AkcneKarty {
     @Override
     public void pouzil(Hrac hrac) {
 
+        for(int i = 0 ; i < 6 ; i++){
+           int nahodnaPremenna = (int)(Math.random() * 6);
+           HraciePole temp = pole.get(i);
+           pole.set(i, pole.get(nahodnaPremenna));
+           pole.set(nahodnaPremenna, temp);
+        }
     }
 }
