@@ -22,6 +22,13 @@ public class AkcnaKartaDivokyBill extends AkcneKarty {
 
         int b = ZKlavesnice.readInt("Na ktoré políčko chcete vystreliť ?");
 
+        while (true) {
+            if (b < 1 || b > 6) {
+                b = nejdeZahrat(b);
+                continue;
+            }
+            break;
+        }
         if(pole.get(b-1) instanceof Kacka){
             hraci[pole.get(b-1).getCisloVlastnika() - 1].hracDostalZasah();
             pole.remove(b-1);

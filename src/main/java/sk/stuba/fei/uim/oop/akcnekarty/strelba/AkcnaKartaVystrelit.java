@@ -20,11 +20,15 @@ public class AkcnaKartaVystrelit extends AkcneKarty {
 
         int b = ZKlavesnice.readInt("Na ktoré políčko chcete vystreliť ?");
         while (true){
-            if(!zamerane[b-1]){
-                System.out.println("Toto poličko nie je zamerané, daj iné");
-                b = ZKlavesnice.readInt("Na ktoré políčko chcete vystreliť ?");
+            if(b < 1 || b > 6){
+                b = nejdeZahrat(b);
                 continue;
             }
+            if(!zamerane[b-1]){
+                    System.out.println("Toto poličko nie je zamerané, daj iné");
+                    b = ZKlavesnice.readInt("Na ktoré políčko chcete vystreliť ?");
+                    continue;
+                }
             break;
         }
 

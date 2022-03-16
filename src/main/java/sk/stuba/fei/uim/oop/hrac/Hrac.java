@@ -1,8 +1,7 @@
 package sk.stuba.fei.uim.oop.hrac;
 
 import sk.stuba.fei.uim.oop.akcnekarty.AkcneKarty;
-import sk.stuba.fei.uim.oop.akcnekarty.strelba.AkcnaKartaVystrelit;
-import sk.stuba.fei.uim.oop.akcnekarty.strelba.AkcnaKartaZamierit;
+import sk.stuba.fei.uim.oop.akcnekarty.strelba.*;
 import sk.stuba.fei.uim.oop.hraciepole.HraciePole;
 import sk.stuba.fei.uim.oop.hraciepole.*;
 import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
@@ -23,29 +22,26 @@ public class Hrac {
     public Hrac(int poradoveCislo) {
         this.meno = "Hráč ";
         this.poradoveCislo = poradoveCislo;
-        this.pocetKaciek = 5;
+        this.pocetKaciek = 2;
         this.hracZije = true;
     }
 
     public Hrac(String meno , int poradoveCislo) {
         this.meno = meno;
         this.poradoveCislo = poradoveCislo;
-        this.pocetKaciek = 5;
+        this.pocetKaciek = 2;
         this.hracZije = true;
     }
 
 
-    public boolean hracDostalZasah() {
+    public void hracDostalZasah() {
         this.pocetKaciek--;
         if(pocetKaciek == 0){
             this.hracZije = false;
-
         }
-        return hracZije;
     }
 
     public void hracZomrel(ArrayList<AkcneKarty> balikAkcneKarty){
-
         for (int i = 0; i < this.ruka.size() ; i++) {
             balikAkcneKarty.add(this.ruka.get(i));
             this.ruka.remove(i);
@@ -106,11 +102,10 @@ public class Hrac {
 
         mojeKacky = new ArrayList<>();
 
-        for(int i = 0; i < 5; i++) {
+        for(int i = 0; i < pocetKaciek; i++) {
             mojeKacky.add(new Kacka(hrac));
             balikHraciePole.add(mojeKacky.get(i));
         }
-
     }
 
     public void coMaHracNaRuke(boolean[] zamerane) {
@@ -163,9 +158,5 @@ public class Hrac {
 
     public int getPocetKaciek() {
         return pocetKaciek;
-    }
-
-    public ArrayList<HraciePole> getMojeKacky() {
-        return mojeKacky;
     }
 }

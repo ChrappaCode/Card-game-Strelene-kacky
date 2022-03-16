@@ -20,6 +20,10 @@ public class AkcnaKartaZamierit extends AkcneKarty {
 
         int b = ZKlavesnice.readInt("Ktoré políčko chcete zamerať ?");
         while (true){
+            if(b < 1 || b > 6){
+                b = nejdeZahrat(b);
+                continue;
+            }
             if(zamerane[b-1]){
                 System.out.println("Toto poličko je už zamerané");
                 b = ZKlavesnice.readInt("Ktoré políčko chcete zamieriť ?");

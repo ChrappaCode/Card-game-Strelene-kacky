@@ -55,29 +55,35 @@ public class StreleneKacky {
         Collections.shuffle(balikAkcneKarty);
 
         vypisPole();
-
-        for (Hrac hrac : hraci) {
-            hrac.hracTahaKartu(balikAkcneKarty);
-            hrac.hracTahaKartu(balikAkcneKarty);
-            hrac.hracTahaKartu(balikAkcneKarty);
-        }
-
-        for (this.ktoJeNaTahu = 0;kolkoZijeHracov() > 1;this.prepniHraca()) {
-
-        Hrac hracNaTahu = this.hraci[ktoJeNaTahu];
-
-        System.out.println("Tieto karty má " + hracNaTahu.getMeno() +" "+ hracNaTahu.getPoradoveCislo());
-        hracNaTahu.coMaHracNaRuke(zamerane);
-        hracNaTahu.hracZahralKartu(balikAkcneKarty,zamerane);
-
-        vypisPole();
-
         getHraci();
+        rozdajKartyHracom();
+
+        for (this.ktoJeNaTahu = 0; kolkoZijeHracov() > 1; this.prepniHraca()) {
+
+            Hrac hracNaTahu = this.hraci[ktoJeNaTahu];
+            if (!hracNaTahu.getHracZije()){
+                hracNaTahu.hracZomrel(balikAkcneKarty);
+                continue;
+            }
+            System.out.println("Tieto karty má " + hracNaTahu.getMeno() +" "+ hracNaTahu.getPoradoveCislo());
+            hracNaTahu.coMaHracNaRuke(zamerane);
+            hracNaTahu.hracZahralKartu(balikAkcneKarty,zamerane);
+
+            vypisPole();
+            getHraci();
 
         }
         vitazHry();
         System.out.println("Hra sa skončila");
         System.out.println("Jakub Chrappa ais: 111286");
+    }
+
+    private void rozdajKartyHracom(){
+        for (Hrac hrac : hraci) {
+            hrac.hracTahaKartu(balikAkcneKarty);
+            hrac.hracTahaKartu(balikAkcneKarty);
+            hrac.hracTahaKartu(balikAkcneKarty);
+        }
     }
 
     private void novyBalik() {
@@ -119,7 +125,6 @@ public class StreleneKacky {
         for (Hrac hrac : hraci) {
             hrac.rozdajKacky(hrac, balikHraciePole);
         }
-
     }
 
     private void generujHracov() {
@@ -134,6 +139,7 @@ public class StreleneKacky {
             }
         }
     }
+
     private int kolkoZijeHracov() {
         int pocet = 0;
         for (Hrac hrac : this.hraci) {
@@ -150,11 +156,11 @@ public class StreleneKacky {
         this.ktoJeNaTahu = (this.ktoJeNaTahu % pocetHracov);
     }
 
-
     private void getHraci() {
         for (int i = 0; i < pocetHracov; i++) {
             System.out.println(this.hraci[i].getMeno() +" "+ this.hraci[i].getPoradoveCislo() + " -> počet životov: " + this.hraci[i].getPocetKaciek());
         }
+        System.out.println("---------------------------------");
     }
 
     private void vitazHry() {
@@ -165,42 +171,25 @@ public class StreleneKacky {
         }
     }
 
-   /* private void vypisBalicekAkcnychKariet() {
-        System.out.println("toto je balik akcnych kariet: ");
-        for (AkcneKarty akcneKarty : balikAkcneKarty) {
-            System.out.println("• " + akcneKarty.getMeno());
-        }
-        System.out.println("------------------------------------------------");
-    }
-
-    private void vypisBalikPole() {
-        System.out.println("toto je balik kariet pola: ");
-        for (HraciePole hraciePole : balikHraciePole) {
-            System.out.println("• " + hraciePole.getMeno() +" "+ hraciePole.getCisloVlastnika());
-        }
-        System.out.println("------------------------------------------------");
-    }*/
-
     private void vypisPole() {
         System.out.println("toto je herne pole: ");
         for (int i = 0; i < 6 ; i++) {
-            System.out.print((i+1) +" • " + balikHraciePole.get(i).getMeno());
-            if(balikHraciePole.get(i) instanceof Kacka){
-                System.out.print(" " +  balikHraciePole.get(i).getCisloVlastnika());
-            }
-            if(balikHraciePole.get(i) instanceof Kacka){
-                System.out.print(" -> ");
-            }
-            if(balikHraciePole.get(i) instanceof Voda){
-                System.out.print("     -> ");
-            }
+            System.out.print((i+1) +" • ");
+
             if(zamerane[i]){
-                System.out.println("toto políčko je zamerané");
+                System.out.print("zamerané -> " + balikHraciePole.get(i).getMeno());
             }
             if(!zamerane[i]){
-                System.out.println("toto políčko nie je zamerané");
+                System.out.print("nezamerané -> " + balikHraciePole.get(i).getMeno());
+            }
+
+            if(balikHraciePole.get(i) instanceof Kacka){
+                System.out.println(" " + balikHraciePole.get(i).getMenoVlastnika() + balikHraciePole.get(i).getCisloVlastnika());
+            }
+            else{
+                System.out.println();
             }
         }
-        System.out.println("------------------------");
+        System.out.println("---------------------------------");
     }
 }

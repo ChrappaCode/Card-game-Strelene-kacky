@@ -4,9 +4,11 @@ public abstract class HraciePole {
 
     protected String meno;
     protected int cisloVlastnika;
+    protected String menoVlastnika;
 
-    public HraciePole(String meno , int poradoveCislo){
+    public HraciePole(String meno ,String menoVlastnika , int poradoveCislo){
         this.meno = meno;
+        this.menoVlastnika = menoVlastnika;
         this.cisloVlastnika = poradoveCislo;
     }
 
@@ -16,5 +18,9 @@ public abstract class HraciePole {
 
     public int getCisloVlastnika() {
         return cisloVlastnika;
+    }
+
+    public String getMenoVlastnika() {
+        return menoVlastnika;
     }
 }

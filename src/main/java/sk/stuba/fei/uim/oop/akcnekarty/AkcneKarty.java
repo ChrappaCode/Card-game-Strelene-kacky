@@ -2,6 +2,7 @@ package sk.stuba.fei.uim.oop.akcnekarty;
 
 import sk.stuba.fei.uim.oop.hrac.Hrac;
 import sk.stuba.fei.uim.oop.hraciepole.HraciePole;
+import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
 import java.util.ArrayList;
 
@@ -17,6 +18,12 @@ public abstract class AkcneKarty {
         this.zamerane = zamerane;
         this.pole = pole;
         this.hraci = hraci;
+    }
+
+    public int nejdeZahrat(int b){
+        System.out.println("Sem to nejde ");
+        b = ZKlavesnice.readInt("Ešte raz");
+        return b;
     }
 
 

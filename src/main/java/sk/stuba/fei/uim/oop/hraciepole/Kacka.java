@@ -7,7 +7,7 @@ public class Kacka extends HraciePole{
     private static final String MENO = "Kačiak";
 
     public Kacka(Hrac hracovaKacka) {
-        super(MENO, hracovaKacka.getPoradoveCislo());
+        super(MENO, hracovaKacka.getMeno(), hracovaKacka.getPoradoveCislo());
     }
 
 
