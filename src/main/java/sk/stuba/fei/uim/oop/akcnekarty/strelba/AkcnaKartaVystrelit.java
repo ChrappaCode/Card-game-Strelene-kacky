@@ -18,26 +18,26 @@ public class AkcnaKartaVystrelit extends AkcneKarty {
     @Override
     public void pouzil(Hrac hrac) {
 
-        int b = ZKlavesnice.readInt("Na ktoré políčko chcete vystreliť ?");
+        int vystrel = ZKlavesnice.readInt("Na ktoré políčko chcete vystreliť ?");
         while (true){
-            if(b < 1 || b > 6){
-                b = nejdeZahrat(b);
+            if(vystrel < 1 || vystrel > 6){
+                vystrel = nejdeZahrat(vystrel);
                 continue;
             }
-            if(!zamerane[b-1]){
+            if(!zamerane[vystrel-1]){
                     System.out.println("Toto poličko nie je zamerané, daj iné");
-                    b = ZKlavesnice.readInt("Na ktoré políčko chcete vystreliť ?");
+                    vystrel = ZKlavesnice.readInt("Na ktoré políčko chcete vystreliť ?");
                     continue;
                 }
             break;
         }
 
-        if(pole.get(b-1) instanceof Kacka && zamerane[b-1]){
-            hraci[pole.get(b-1).getCisloVlastnika() - 1].hracDostalZasah();
-            pole.remove(b-1);
+        if(pole.get(vystrel-1) instanceof Kacka && zamerane[vystrel-1]){
+            hraci[pole.get(vystrel-1).getCisloVlastnika() - 1].hracDostalZasah();
+            pole.remove(vystrel-1);
         }
 
-        zamerane[b-1] = false;
+        zamerane[vystrel-1] = false;
 
     }
 

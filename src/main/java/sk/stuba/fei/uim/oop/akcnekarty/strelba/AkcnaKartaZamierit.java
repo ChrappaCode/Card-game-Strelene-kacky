@@ -18,20 +18,20 @@ public class AkcnaKartaZamierit extends AkcneKarty {
     @Override
     public void pouzil(Hrac hrac) {
 
-        int b = ZKlavesnice.readInt("Ktoré políčko chcete zamerať ?");
+        int zamier = ZKlavesnice.readInt("Ktoré políčko chcete zamerať ?");
         while (true){
-            if(b < 1 || b > 6){
-                b = nejdeZahrat(b);
+            if(zamier < 1 || zamier > 6){
+                zamier = nejdeZahrat(zamier);
                 continue;
             }
-            if(zamerane[b-1]){
+            if(zamerane[zamier-1]){
                 System.out.println("Toto poličko je už zamerané");
-                b = ZKlavesnice.readInt("Ktoré políčko chcete zamieriť ?");
+                zamier = ZKlavesnice.readInt("Ktoré políčko chcete zamieriť ?");
                 continue;
             }
             break;
         }
-        zamerane[b-1] = true;
+        zamerane[zamier-1] = true;
 
     }
 }

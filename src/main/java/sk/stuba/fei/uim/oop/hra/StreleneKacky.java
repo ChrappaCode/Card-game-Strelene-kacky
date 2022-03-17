@@ -14,7 +14,7 @@ import java.util.Collections;
 
 public class StreleneKacky {
 
-    public static final int MAX_POCET_HRACOV = 6;
+    private static final int MAX_POCET_HRACOV = 6;
     private final Hrac[] hraci;
     private int pocetHracov;
     private int ktoJeNaTahu = 0;
@@ -27,7 +27,7 @@ public class StreleneKacky {
         System.out.println("Strelené Kačky Jakub Chrappa");
         this.pocetHracov = ZKlavesnice.readInt(String.format("Zadaj pocet hracov od 2 do %d: ", MAX_POCET_HRACOV));
         while (true){
-            if(pocetHracov < 2 || pocetHracov > 6){ //aby nedal menej ako 2 a viac ako 6
+            if(pocetHracov < 2 || pocetHracov > 6){
                 System.out.printf("Minimálny počet hráčov je 2 a maximálny počet hráčov je %d takže znova!\n", MAX_POCET_HRACOV);
                 pocetHracov = ZKlavesnice.readInt(String.format("Zadaj pocet hracov od 2 do %d: ", MAX_POCET_HRACOV));
                 continue;
@@ -109,7 +109,7 @@ public class StreleneKacky {
         balikAkcneKarty.add(new AkcnaKartaKacaciTanec(zamerane , balikHraciePole , hraci));
     }
 
-    public void inicializaciaZamerania() {
+    private void inicializaciaZamerania() {
         this.zamerane = new boolean[6];
         Arrays.fill(zamerane, false);
     }
@@ -152,7 +152,6 @@ public class StreleneKacky {
 
     private void prepniHraca() {
         this.ktoJeNaTahu ++;
-        //System.out.println(this.ktoJeNaTahu);
         this.ktoJeNaTahu = (this.ktoJeNaTahu % pocetHracov);
     }
 
@@ -184,7 +183,7 @@ public class StreleneKacky {
             }
 
             if(balikHraciePole.get(i) instanceof Kacka){
-                System.out.println(" " + balikHraciePole.get(i).getMenoVlastnika() + balikHraciePole.get(i).getCisloVlastnika());
+                System.out.println(" " + balikHraciePole.get(i).getMenoVlastnika() +" "+ balikHraciePole.get(i).getCisloVlastnika());
             }
             else{
                 System.out.println();

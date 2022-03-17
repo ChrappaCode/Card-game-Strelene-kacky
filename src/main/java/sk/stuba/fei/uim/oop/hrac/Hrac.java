@@ -20,16 +20,16 @@ public class Hrac {
     private final ArrayList<AkcneKarty> ruka = new ArrayList<>();
 
     public Hrac(int poradoveCislo) {
-        this.meno = "Hráč ";
+        this.meno = "Hráč";
         this.poradoveCislo = poradoveCislo;
-        this.pocetKaciek = 2;
+        this.pocetKaciek = 5;
         this.hracZije = true;
     }
 
     public Hrac(String meno , int poradoveCislo) {
         this.meno = meno;
         this.poradoveCislo = poradoveCislo;
-        this.pocetKaciek = 2;
+        this.pocetKaciek = 5;
         this.hracZije = true;
     }
 
@@ -124,7 +124,7 @@ public class Hrac {
         }
     }
 
-    public boolean nedaSaZahratZamerat(boolean[] zamerane){
+    private boolean nedaSaZahratZamerat(boolean[] zamerane){
 
         for(boolean b : zamerane){
             if(!b) {
@@ -134,7 +134,7 @@ public class Hrac {
         return true;
     }
 
-    public boolean nedaSaZahratVystrelit(boolean[] zamerane){
+    private boolean nedaSaZahratVystrelit(boolean[] zamerane){
 
         for(boolean b : zamerane){
             if(b) {
