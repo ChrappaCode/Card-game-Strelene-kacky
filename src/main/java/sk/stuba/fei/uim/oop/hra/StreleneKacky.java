@@ -176,12 +176,11 @@ public class StreleneKacky {
             System.out.print((i+1) +" • ");
 
             if(zamerane[i]){
-                System.out.print("zamerané -> " + balikHraciePole.get(i).getMeno());
+                System.out.print("✔️-> " + balikHraciePole.get(i).getMeno());
             }
             if(!zamerane[i]){
-                System.out.print("nezamerané -> " + balikHraciePole.get(i).getMeno());
+                System.out.print("❌️-> " + balikHraciePole.get(i).getMeno());
             }
-
             if(balikHraciePole.get(i) instanceof Kacka){
                 System.out.println(" " + balikHraciePole.get(i).getMenoVlastnika() +" "+ balikHraciePole.get(i).getCisloVlastnika());
             }
