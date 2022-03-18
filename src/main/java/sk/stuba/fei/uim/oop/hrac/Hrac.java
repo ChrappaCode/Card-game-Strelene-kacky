@@ -80,7 +80,7 @@ public class Hrac {
                         break;
                     }
                 }
-            }while (cisloKarty < 1 || cisloKarty > 3);
+            } while (cisloKarty < 1 || cisloKarty > 3);
 
             this.ruka.get(cisloKarty - 1).pouzil(this);
             balikAkcneKarty.add(this.ruka.get(cisloKarty - 1));
