@@ -4,7 +4,7 @@ import sk.stuba.fei.uim.oop.hrac.Hrac;
 
 public class Kacka extends HraciePole{
 
-    private static final String MENO = "Kačiak";
+    private static final String MENO = "\uD83E\uDD86";
 
     public Kacka(Hrac hracovaKacka) {
         super(MENO, hracovaKacka.getMeno(), hracovaKacka.getPoradoveCislo());
