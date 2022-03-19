@@ -90,11 +90,10 @@ public class Hrac {
     }
 
     public void zahodKartu(ArrayList<AkcneKarty> balikAkcneKarty){
-        do {
-            this.cisloKarty = ZKlavesnice.readInt("Ktorú kartu chceš zahodiť (1 , 2 , 3)");
-        } while (cisloKarty < 1 || cisloKarty > 3);
-        balikAkcneKarty.add(this.ruka.get(cisloKarty - 1));
-        this.ruka.remove(cisloKarty - 1);
+
+        this.cisloKarty = ZKlavesnice.readInt("Nemožete zahrať žiadnu kartu (zadajte ľubovolné číslo pre pokračovanie karta bude automaticky vymenená)");
+        balikAkcneKarty.add(this.ruka.get(1));
+        this.ruka.remove(1);
         hracTahaKartu(balikAkcneKarty);
     }
 
