@@ -26,7 +26,6 @@ public abstract class AkcneKarty {
         return b;
     }
 
-
     public String getMeno() {
         return meno;
     }
