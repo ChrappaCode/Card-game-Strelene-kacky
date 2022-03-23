@@ -29,7 +29,7 @@ public class StreleneKacky {
         while (true){
             if(pocetHracov < 2 || pocetHracov > 6){
                 System.out.printf("Minimálny počet hráčov je 2 a maximálny počet hráčov je %d takže znova!\n", MAX_POCET_HRACOV);
-                pocetHracov = ZKlavesnice.readInt(String.format("Zadaj pocet hracov od 2 do %d: ", MAX_POCET_HRACOV));
+                pocetHracov = ZKlavesnice.readInt(String.format("Zadaj počet hráčov od 2 do %d: ", MAX_POCET_HRACOV));
                 continue;
             }
             this.hraci = new Hrac[pocetHracov];
