@@ -25,7 +25,7 @@ public class StreleneKacky {
     public StreleneKacky() {
 
         System.out.println("Strelené Kačky Jakub Chrappa");
-        this.pocetHracov = ZKlavesnice.readInt(String.format("Zadaj pocet hracov od 2 do %d: ", MAX_POCET_HRACOV));
+        this.pocetHracov = ZKlavesnice.readInt(String.format("Zadaj počet hráčov od 2 do %d: ", MAX_POCET_HRACOV));
         while (true){
             if(pocetHracov < 2 || pocetHracov > 6){
                 System.out.printf("Minimálny počet hráčov je 2 a maximálny počet hráčov je %d takže znova!\n", MAX_POCET_HRACOV);

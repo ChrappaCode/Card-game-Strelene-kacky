@@ -94,8 +94,8 @@ public class Hrac {
         while (cisloKarty < 1 || cisloKarty > 3){
         this.cisloKarty = ZKlavesnice.readInt("Nemožete zahrať žiadnu kartu (Ktorú kartu chcete zahodiť ? (1  2  3))");
         }
-        balikAkcneKarty.add(this.ruka.get(cisloKarty));
-        this.ruka.remove(cisloKarty);
+        balikAkcneKarty.add(this.ruka.get(cisloKarty-1));
+        this.ruka.remove(cisloKarty-1);
         hracTahaKartu(balikAkcneKarty);
     }
 
