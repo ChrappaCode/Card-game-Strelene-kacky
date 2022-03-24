@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class AkcnaKartaTurbokacka extends AkcneKarty {
 
-    private static final String MENO = "Turbokacka";
+    private static final String MENO = "Turbokačka";
 
     public AkcnaKartaTurbokacka(boolean[] zamerane , ArrayList<HraciePole> pole , Hrac[] hraci){
         super(MENO,zamerane , pole, hraci);

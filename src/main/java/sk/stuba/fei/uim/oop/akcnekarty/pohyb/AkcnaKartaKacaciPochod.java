@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class AkcnaKartaKacaciPochod extends AkcneKarty {
 
-    private static final String MENO = "Kacaci Pochod";
+    private static final String MENO = "Kačací Pochod";
 
     public AkcnaKartaKacaciPochod(boolean[] zamerane , ArrayList<HraciePole> pole , Hrac[] hraci){
         super(MENO , zamerane, pole , hraci);

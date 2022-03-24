@@ -9,7 +9,7 @@ import java.util.Collections;
 
 public class AkcnaKartaKacaciTanec extends AkcneKarty {
 
-    private static final String MENO = "Kacaci Tanec";
+    private static final String MENO = "Kačací Tanec";
 
     public AkcnaKartaKacaciTanec(boolean[] zamerane , ArrayList<HraciePole> pole , Hrac[] hraci){
         super(MENO,zamerane, pole ,hraci);

@@ -111,7 +111,7 @@ public class Hrac {
     public void coMaHracNaRuke(boolean[] zamerane) {
         this.pomocneCislo = new ArrayList<>(3);
         for (int i = 0; i < ruka.size() ; i++) {
-            System.out.print(String.format("karta %d • ", i+1) + ruka.get(i).getMeno());
+            System.out.print(String.format("Karta %d • ", i+1) + ruka.get(i).getMeno());
 
             if(ruka.get(i) instanceof AkcnaKartaVystrelit && nedaSaZahratVystrelit(zamerane)){
                 System.out.println(" - Nič nie je zamerané nemožeš zahrať kartu vystreliť");
