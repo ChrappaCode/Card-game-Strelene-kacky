@@ -111,15 +111,17 @@ public class Hrac {
     public void coMaHracNaRuke(boolean[] zamerane) {
         this.pomocneCislo = new ArrayList<>(3);
         for (int i = 0; i < ruka.size() ; i++) {
+            System.out.print(String.format("karta %d • ", i+1) + ruka.get(i).getMeno());
+
             if(ruka.get(i) instanceof AkcnaKartaVystrelit && nedaSaZahratVystrelit(zamerane)){
-                System.out.println("Nič nie je zamerané nemožeš zahrať kartu vystreliť");
+                System.out.println(" - Nič nie je zamerané nemožeš zahrať kartu vystreliť");
                 continue;
             }
             if(ruka.get(i) instanceof AkcnaKartaZamierit && nedaSaZahratZamerat(zamerane)){
-                System.out.println("Všetko je zamerané nemožeš zahrať kartu zamerať");
+                System.out.println(" - Všetko je zamerané nemožeš zahrať kartu zamerať");
                 continue;
             }
-            System.out.println(String.format("karta %d • ", i+1) + ruka.get(i).getMeno());
+            System.out.println();
             pomocneCislo.add(i+1);
         }
     }
