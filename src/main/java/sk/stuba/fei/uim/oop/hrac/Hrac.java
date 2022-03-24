@@ -13,7 +13,6 @@ public class Hrac {
     private final String meno;
     private final int poradoveCislo;
     private int pocetKaciek;
-    private ArrayList<HraciePole> mojeKacky;
     private ArrayList<Integer> pomocneCislo;
     private boolean hracZije;
     private int cisloKarty;
@@ -101,7 +100,7 @@ public class Hrac {
 
     public void rozdajKacky(Hrac hrac , ArrayList<HraciePole> balikHraciePole) {
 
-        mojeKacky = new ArrayList<>();
+        ArrayList<HraciePole> mojeKacky = new ArrayList<>();
 
         for(int i = 0; i < pocetKaciek; i++) {
             mojeKacky.add(new Kacka(hrac));
@@ -127,8 +126,8 @@ public class Hrac {
 
     private boolean nedaSaZahratZamerat(boolean[] zamerane){
 
-        for(boolean b : zamerane){
-            if(!b) {
+        for(boolean zamerane1 : zamerane){
+            if(!zamerane1) {
                 return false;
             }
         }
@@ -137,8 +136,8 @@ public class Hrac {
 
     private boolean nedaSaZahratVystrelit(boolean[] zamerane){
 
-        for(boolean b : zamerane){
-            if(b) {
+        for(boolean zamerane1 : zamerane){
+            if(zamerane1) {
                 return false;
             }
         }
