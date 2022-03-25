@@ -25,7 +25,7 @@ public class AkcnaKartaZamierit extends AkcneKarty {
                 continue;
             }
             if(zamerane[zamier-1]){
-                System.out.println("Toto poličko je už zamerané");
+                System.out.println("Toto poličko je už zamerané, daj iné");
                 zamier = ZKlavesnice.readInt("Ktoré políčko chcete zamieriť ?");
                 continue;
             }
